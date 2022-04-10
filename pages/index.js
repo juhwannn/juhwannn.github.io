@@ -14,6 +14,7 @@ const MainSubject = styled.div`
     font-size: 50px;
     position: absolute;
     left: 50%;
+    top: 3.5%;
     transform: translateX(-50%);
     background: linear-gradient(to left, ${leftColor} 50%, ${rightColor} 50%);
     -webkit-background-clip: text;
