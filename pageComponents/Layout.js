@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Transition from "./Transition";
 import styled from "styled-components";
 import {LeftColor, RightColor} from "./elements/Color";
@@ -16,6 +16,7 @@ const Root = styled.div`
             width: 50%;
             height: 100%;
                         
+            font-weight: bold;
             color: ${RightColor};
             
             padding-left: 30px;
@@ -29,6 +30,7 @@ const Root = styled.div`
             width: 50%;
             height: 100%;
             
+            font-weight: bold;
             color: ${LeftColor};
             
             padding-right: 30px;
@@ -71,12 +73,35 @@ const Root = styled.div`
     }
 `;
 
+function MenuFactory(path, menuName, setMenuName) {
+
+    setMenuName("ERROR");
+
+    if (path === "/") {
+        setMenuName("홈");
+    }
+
+    if (path === "/info") {
+        setMenuName("정보");
+    }
+
+    if (path === "/project") {
+        setMenuName("프로젝트");
+    }
+};
+
 const Layout =
 ({
      children
 }) => {
 
+    const [menuName, setMenuName] = useState("");
+
     const router = useRouter();
+
+    useEffect(() => {
+        MenuFactory(router.pathname, menuName, setMenuName);
+    }, [router.pathname]);
 
     return (
             <Transition
@@ -89,7 +114,7 @@ const Layout =
                         </div>
 
                         <div className="rightHeader">
-                            홈
+                            {menuName}
                         </div>
                     </div>
 
