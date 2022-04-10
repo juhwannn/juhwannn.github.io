@@ -313,7 +313,7 @@ export default function Home() {
                                 <AiFillPhone size="35"/>
 
                                 <span className="aiFillPhoneBackText">
-                                    7650&#45;0350
+                                    010&#45;7650&#45;0350
                                 </span>
                             </div>
                         </span>
