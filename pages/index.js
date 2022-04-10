@@ -6,9 +6,7 @@ import Image from "next/image";
 // import 'react-quill/dist/quill.snow.css';
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { RiKakaoTalkFill } from "react-icons/ri";
-
-const leftColor = "#7F7F7F";
-const rightColor = "#FFF";
+import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 
 const MainSubject = styled.div`
     font-size: 50px;
@@ -16,48 +14,14 @@ const MainSubject = styled.div`
     left: 50%;
     top: 3.5%;
     transform: translateX(-50%);
-    background: linear-gradient(to left, ${leftColor} 50%, ${rightColor} 50%);
+    background: linear-gradient(to left, ${LeftColor} 50%, ${RightColor} 50%);
     -webkit-background-clip: text;
     color: transparent;
 `;
 
 const Root = styled.div`
-    background: linear-gradient(to right, ${leftColor} 50%, ${rightColor} 50%);
+    background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
     height: 100vh;
-    
-    .header {
-        height: 5vh;
-        
-        .leftHeader {
-            float: left;
-            
-            width: 50%;
-            height: 100%;
-                        
-            color: ${rightColor};
-            
-            padding-left: 30px;
-            padding-top: 30px;
-        }
-        
-        .rightHeader {
-            float: right;
-            text-align: right;
-            
-            width: 50%;
-            height: 100%;
-            
-            color: ${leftColor};
-            
-            padding-right: 30px;
-            padding-top: 30px;
-        }
-    }
-    .header::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
     
     .body {
         height: 90vh;
@@ -178,7 +142,7 @@ const Root = styled.div`
                             transform: rotateY(0deg);
                             position: absolute;
                             
-                            color: ${leftColor};
+                            color: ${LeftColor};
                         }
                         
                         .aiFillGithubBack,
@@ -292,15 +256,6 @@ export default function Home() {
     return (
         <Root>
             <MainSubject>DevBlog</MainSubject>
-            <div className="header">
-                <div className="leftHeader">
-                    안주환 &nbsp;|&nbsp; 개발자
-                </div>
-
-                <div className="rightHeader">
-                    홈
-                </div>
-            </div>
 
             <div className="body">
                 <div className="leftBody">
@@ -359,7 +314,7 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            alert("PROJECT");
+                            router.push("/project");
                         }}>
                             PROJECT
                         </button><br/>
