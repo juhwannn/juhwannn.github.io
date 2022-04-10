@@ -43,6 +43,8 @@ const Root = styled.div`
     
     .body {
         height: 90vh;
+        
+        overflow: auto;
     }
     
     .footer {
