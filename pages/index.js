@@ -155,22 +155,54 @@ const Root = styled.div`
                     .aiOutlineMail, 
                     .riKakaoTalkFill, 
                     .aiFillPhone {
-                        display: inline;
+                        display: inline-block;
                         margin-left: 25px;
                         margin-right: 25px;
                         
-                        .aiFillGithubText, 
-                        .aiOutlineMailText, 
-                        .riKakaoTalkFillText, 
-                        .aiFillPhoneText {
-                            display: none;
+                        position: relative;
+                        
+                        .aiFillGithubFront, .aiFillGithubBack,
+                        .aiOutlineMailFront,.aiOutlineMailBack, 
+                        .riKakaoTalkFillFront, .riKakaoTalkFillBack, 
+                        .aiFillPhoneFront, .aiFillPhoneBack {
+                            backface-visibility: hidden;
+                            transition: 1s;
+                            
+                            cursor: pointer;
+                        }
+                        
+                        .aiFillGithubFront, 
+                        .aiOutlineMailFront, 
+                        .riKakaoTalkFillFront,
+                        .aiFillPhoneFront {
+                            transform: rotateY(0deg);
+                            position: absolute;
+                            
+                            color: ${leftColor};
+                        }
+                        
+                        .aiFillGithubBack,
+                        .aiOutlineMailBack,
+                        .riKakaoTalkFillBack,
+                        .aiFillPhoneBack {
+                            transform: rotateY(-180deg);
+                            
+                            color: rgb(0, 86, 102);
                         }
                     }
-                    .aiFillGithub:hover, 
-                    .aiOutlineMail:hover, 
-                    .riKakaoTalkFill:hover, 
-                    .aiFillPhone:hover {
-                        cursor: pointer;
+                    
+                    .aiFillGithub:hover .aiFillGithubFront,
+                    .aiOutlineMail:hover .aiOutlineMailFront,
+                    .riKakaoTalkFill:hover .riKakaoTalkFillFront,
+                    .aiFillPhone:hover .aiFillPhoneFront {
+                        transform: rotateY(180deg);
+                    }
+                    
+                    .aiFillGithub:hover .aiFillGithubBack, 
+                    .aiOutlineMail:hover .aiOutlineMailBack,
+                    .riKakaoTalkFill:hover .riKakaoTalkFillBack,
+                    .aiFillPhone:hover .aiFillPhoneBack {
+                        transform: rotateY(0deg);
                     }
                 }
                 
@@ -231,7 +263,6 @@ const Root = styled.div`
 
 export default function Home() {
     const router = useRouter();
-
 
     return (
         <Root>
@@ -325,34 +356,46 @@ export default function Home() {
                         </button><br/>
 
                         <div className="socialMediaIcon">
-                        <span className="aiFillGithub">
-                            <AiFillGithub size="35"/>
+                            <span className="aiFillGithub">
 
-                            <span className="aiFillGithubText">
+                                <div className="aiFillGithubFront">
+                                    <AiFillGithub size="35"/>
+                                </div>
 
+                                <div className="aiFillGithubBack">
+                                    <AiFillGithub size="35" filter="invert"/>
+                                </div>
                             </span>
-                        </span>
+
                             <span className="aiOutlineMail">
-                            <AiOutlineMail size="35"/>
+                                <div className="aiOutlineMailFront">
+                                    <AiOutlineMail size="35"/>
+                                </div>
 
-                            <span className="aiOutlineMailText">
-                                algorithm123@naver.com
+                                <div className="aiOutlineMailBack">
+                                    <AiOutlineMail size="35" />
+                                </div>
                             </span>
-                        </span>
+
                             <span className="riKakaoTalkFill">
-                            <RiKakaoTalkFill size="35"/>
+                                <div className="riKakaoTalkFillFront">
+                                    <RiKakaoTalkFill size="35" />
+                                </div>
 
-                            <span className="riKakaoTalkFillText">
-                                KT
+                                <div className="riKakaoTalkFillBack">
+                                    <RiKakaoTalkFill size="35" />
+                                </div>
                             </span>
-                        </span>
+
                             <span className="aiFillPhone">
-                            <AiFillPhone size="35"/>
+                                <div className="aiFillPhoneFront">
+                                    <AiFillPhone size="35"/>
+                                </div>
 
-                            <span className="aiFillPhoneText">
-
+                                <div className="aiFillPhoneBack">
+                                    <AiFillPhone size="35"/>
+                                </div>
                             </span>
-                        </span>
                         </div>
                     </div>
                 </div>
