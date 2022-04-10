@@ -21,11 +21,8 @@ const MainSubject = styled.div`
 
 const Root = styled.div`
     background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
-    height: 100vh;
     
     .body {
-        height: 90vh;
-        
         .leftBody {
             float: left;
             
@@ -225,29 +222,6 @@ const Root = styled.div`
         content: "";
         clear: both;
     }
-    
-    .footer {
-        height: 5vh;
-        .leftFooter {
-            float: left;
-            
-            width: 50%;
-            height: 100%;
-        }
-        
-        .rightFooter {
-            float: right;
-            
-            width: 50%;
-            height: 100%;
-            
-        }
-    }
-    .footer::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
 `;
 
 export default function Home() {
@@ -393,16 +367,6 @@ export default function Home() {
                             </span>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div className="footer">
-                <div className="leftFooter">
-                    leftFooter
-                </div>
-
-                <div className="rightFooter">
-                    rightFooter
                 </div>
             </div>
         </Root>
