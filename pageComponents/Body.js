@@ -16,6 +16,13 @@ const LeftRoot = styled.div`
         content: "";
         clear: both;
     }
+    
+    .leftContent {
+        display: table-cell;
+        vertical-align: middle;
+        
+        text-align: center;
+    }
 `;
 
 const RightRoot = styled.div`
@@ -33,12 +40,21 @@ const RightRoot = styled.div`
         content: "";
         clear: both;
     }
+    
+    .rightContent {
+        display: table-cell;
+        vertical-align: middle;
+        
+        text-align: center;
+    }
 `;
 export const LeftBody = ({children}) => {
 
     return (
         <LeftRoot>
-            {children}
+            <div className="leftContent">
+                {children}
+            </div>
         </LeftRoot>
     )
 };
@@ -46,7 +62,9 @@ export const LeftBody = ({children}) => {
 export const RightBody = ({children}) => {
     return (
         <RightRoot>
-            {children}
+            <div className="rightContent">
+                {children}
+            </div>
         </RightRoot>
     );
 };
