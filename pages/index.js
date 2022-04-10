@@ -7,6 +7,7 @@ import Image from "next/image";
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
+import {LeftBody, RightBody} from "../pageComponents/Body";
 
 const MainSubject = styled.div`
     font-size: 50px;
@@ -23,204 +24,168 @@ const Root = styled.div`
     background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
     
     .body {
-        .leftBody {
-            float: left;
+        .leftContent {
+            display: table-cell;
+            backgorund-color: red;
+            vertical-align: middle;
             
-            width: 50%;
-            height: 100%;
-            text-align: center;
-            margin: auto;
-            
-            display: table;
-            
-            .leftContent {
-                display: table-cell;
-                backgorund-color: red;
-                vertical-align: middle;
+            .imageSlide {
+                //overflow: hidden;
+                //font-size: 0;
+                //white-space: nowrap;
+                //width: 100%;
+                //height: 100%;
+                //transition: text-indent 500ms;
+                //position: relative;
+                display: flex;
+                justify-content: center;
                 
-                .imageSlide {
-                    //overflow: hidden;
-                    //font-size: 0;
-                    //white-space: nowrap;
-                    //width: 100%;
-                    //height: 100%;
-                    //transition: text-indent 500ms;
-                    //position: relative;
-                    display: flex;
-                    justify-content: center;
-                    
-                    .image1 {
-                        width: 600px;
-                        height: 450px;
-                        background-image: url("/images/A.png");
-                        background-size: cover;
-                        box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;
-                    }
-                    
-                    //.image2 {
-                    //    width: 600px;
-                    //    height: 450px;
-                    //    background-image: url("/images/B.png");
-                    //    background-size: cover;
-                    //    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;                    
-                    //}
-                    //
-                    //.image3 {
-                    //    width: 600px;
-                    //    height: 450px;
-                    //    background-image: url("/images/C.png");
-                    //    background-size: cover;
-                    //    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;                    
-                    //}
+                .image1 {
+                    width: 600px;
+                    height: 450px;
+                    background-image: url("/images/A.png");
+                    background-size: cover;
+                    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;
                 }
+                
+                //.image2 {
+                //    width: 600px;
+                //    height: 450px;
+                //    background-image: url("/images/B.png");
+                //    background-size: cover;
+                //    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;                    
+                //}
+                //
+                //.image3 {
+                //    width: 600px;
+                //    height: 450px;
+                //    background-image: url("/images/C.png");
+                //    background-size: cover;
+                //    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;                    
+                //}
             }
         }
-        .leftBody::after {
-            display: block;
-            content: "";
-            clear: both;
-        }
+    
         
-        .rightBody {
-            float: right;
+        .rightContent {
+            display: table-cell;
+            vertical-align: middle;
             
-            width: 50%;
-            height: 100%;
-            
-            text-align: center;
-            
-            display: table;
-            
-            .rightContent {
-                display: table-cell;
-                vertical-align: middle;
+            .introTitle {
+                font-size: 30px;
                 
-                .introTitle {
-                    font-size: 30px;
+                margin-bottom: 33px;
+            }
+        
+            .introText {
+                font-size: 18px;
+                
+                font-weight: lighter;
+                
+                margin-bottom: 50px;
+            }
+        
+            .socialMediaIcon {
+                margin-top: 30px;
+                
+                .aiFillGithub, 
+                .aiOutlineMail, 
+                .riKakaoTalkFill, 
+                .aiFillPhone {
+                    display: inline-block;
+                    margin-left: 25px;
+                    margin-right: 25px;
                     
-                    margin-bottom: 33px;
-                }
-            
-                .introText {
-                    font-size: 18px;
+                    position: relative;
                     
-                    font-weight: lighter;
-                    
-                    margin-bottom: 50px;
-                }
-            
-                .socialMediaIcon {
-                    margin-top: 30px;
-                    
-                    .aiFillGithub, 
-                    .aiOutlineMail, 
-                    .riKakaoTalkFill, 
-                    .aiFillPhone {
-                        display: inline-block;
-                        margin-left: 25px;
-                        margin-right: 25px;
+                    .aiFillGithubFront, .aiFillGithubBack,
+                    .aiOutlineMailFront,.aiOutlineMailBack, 
+                    .riKakaoTalkFillFront, .riKakaoTalkFillBack, 
+                    .aiFillPhoneFront, .aiFillPhoneBack {
+                        backface-visibility: hidden;
+                        transition: 1s;
                         
-                        position: relative;
-                        
-                        .aiFillGithubFront, .aiFillGithubBack,
-                        .aiOutlineMailFront,.aiOutlineMailBack, 
-                        .riKakaoTalkFillFront, .riKakaoTalkFillBack, 
-                        .aiFillPhoneFront, .aiFillPhoneBack {
-                            backface-visibility: hidden;
-                            transition: 1s;
-                            
-                            cursor: pointer;
-                        }
-                        
-                        .aiFillGithubFront, 
-                        .aiOutlineMailFront, 
-                        .riKakaoTalkFillFront,
-                        .aiFillPhoneFront {
-                            transform: rotateY(0deg);
-                            position: absolute;
-                            
-                            color: ${LeftColor};
-                        }
-                        
-                        .aiFillGithubBack,
-                        .aiOutlineMailBack,
-                        .riKakaoTalkFillBack,
-                        .aiFillPhoneBack {
-                            transform: rotateY(-180deg);
-                            
-                            color: rgb(0, 86, 102);
-                            
-                            display: inline-block;
-                            
-                            .aiFillGithubBackText,
-                            .aiOutlineMailBackText,
-                            .riKakaoTalkFillBackText,
-                            .aiFillPhoneBackText {
-                                display: none;
-                                position: absolute;
-                                max-width: 200px;
-                                border: 1px solid;
-                                border-radius: 5px;
-                                padding: 5px;
-                                font-size: 0.8em;
-                                color: white;
-                                background-color: rgb(0, 86, 102);       
-                                white-space: nowrap;          
-                            }
-                        }
-                        
-                        .aiFillGithubBack .aiFillGithubBackText,
-                        .aiOutlineMailBack .aiOutlineMailBackText,
-                        .riKakaoTalkFillBack .riKakaoTalkFillBackText,
-                        .aiFillPhoneBack .aiFillPhoneBackText {
-                            display: block;
-                        }
+                        cursor: pointer;
                     }
                     
-                    .aiFillGithub:hover .aiFillGithubFront,
-                    .aiOutlineMail:hover .aiOutlineMailFront,
-                    .riKakaoTalkFill:hover .riKakaoTalkFillFront,
-                    .aiFillPhone:hover .aiFillPhoneFront {
-                        transform: rotateY(180deg);
-                    }
-                    
-                    .aiFillGithub:hover .aiFillGithubBack, 
-                    .aiOutlineMail:hover .aiOutlineMailBack,
-                    .riKakaoTalkFill:hover .riKakaoTalkFillBack,
-                    .aiFillPhone:hover .aiFillPhoneBack {
+                    .aiFillGithubFront, 
+                    .aiOutlineMailFront, 
+                    .riKakaoTalkFillFront,
+                    .aiFillPhoneFront {
                         transform: rotateY(0deg);
+                        position: absolute;
+                        
+                        color: ${LeftColor};
+                    }
+                    
+                    .aiFillGithubBack,
+                    .aiOutlineMailBack,
+                    .riKakaoTalkFillBack,
+                    .aiFillPhoneBack {
+                        transform: rotateY(-180deg);
+                        
+                        color: rgb(0, 86, 102);
+                        
+                        display: inline-block;
+                        
+                        .aiFillGithubBackText,
+                        .aiOutlineMailBackText,
+                        .riKakaoTalkFillBackText,
+                        .aiFillPhoneBackText {
+                            display: none;
+                            position: absolute;
+                            max-width: 200px;
+                            border: 1px solid;
+                            border-radius: 5px;
+                            padding: 5px;
+                            font-size: 0.8em;
+                            color: white;
+                            background-color: rgb(0, 86, 102);       
+                            white-space: nowrap;          
+                        }
+                    }
+                    
+                    .aiFillGithubBack .aiFillGithubBackText,
+                    .aiOutlineMailBack .aiOutlineMailBackText,
+                    .riKakaoTalkFillBack .riKakaoTalkFillBackText,
+                    .aiFillPhoneBack .aiFillPhoneBackText {
+                        display: block;
                     }
                 }
                 
-                button {
-                    width: 350px;
-                    height: 50px;
-                    border: none;
-                    
-                    margin-bottom: 5px;
-                    
-                    transition:all 0.9s;
+                .aiFillGithub:hover .aiFillGithubFront,
+                .aiOutlineMail:hover .aiOutlineMailFront,
+                .riKakaoTalkFill:hover .riKakaoTalkFillFront,
+                .aiFillPhone:hover .aiFillPhoneFront {
+                    transform: rotateY(180deg);
                 }
-                button:active {
-                    outline: none;
-                    box-shadow: none;
-                }
-                button:hover {
-                    box-shadow: 0 80px 0 0 rgba(0,86,102,0.5) inset, 0 -80px 0 0 rgba(0,86,102,0.5) inset;
-                    color: white;
+                
+                .aiFillGithub:hover .aiFillGithubBack, 
+                .aiOutlineMail:hover .aiOutlineMailBack,
+                .riKakaoTalkFill:hover .riKakaoTalkFillBack,
+                .aiFillPhone:hover .aiFillPhoneBack {
+                    transform: rotateY(0deg);
                 }
             }
+            
+            button {
+                width: 350px;
+                height: 50px;
+                border: none;
+                
+                margin-bottom: 5px;
+                
+                transition:all 0.9s;
+            }
+            button:active {
+                outline: none;
+                box-shadow: none;
+            }
+            button:hover {
+                box-shadow: 0 80px 0 0 rgba(0,86,102,0.5) inset, 0 -80px 0 0 rgba(0,86,102,0.5) inset;
+                color: white;
+            }
         }
-        .rightBody::after {
-            display: block;
-            content: "";
-            clear: both;
-        }
-    }
-    .body::after {
-        display: block;
-        content: "";
-        clear: both;
     }
 `;
 
@@ -232,7 +197,7 @@ export default function Home() {
             <MainSubject>DevBlog</MainSubject>
 
             <div className="body">
-                <div className="leftBody">
+                <LeftBody>
                     <div className="leftContent">
                         <div className="imageSlide">
                             <div className="image1" onClick={e => {
@@ -265,9 +230,9 @@ export default function Home() {
                             {/*/>*/}
                         </div>
                     </div>
-                </div>
+                </LeftBody>
 
-                <div className="rightBody">
+                <RightBody>
                     <div className="rightContent">
                         <div className="introTitle">
                             개발자 안주환입니다.
@@ -367,7 +332,7 @@ export default function Home() {
                             </span>
                         </div>
                     </div>
-                </div>
+                </RightBody>
             </div>
         </Root>
     );
