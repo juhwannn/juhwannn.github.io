@@ -188,6 +188,31 @@ const Root = styled.div`
                             transform: rotateY(-180deg);
                             
                             color: rgb(0, 86, 102);
+                            
+                            display: inline-block;
+                            
+                            .aiFillGithubBackText,
+                            .aiOutlineMailBackText,
+                            .riKakaoTalkFillBackText,
+                            .aiFillPhoneBackText {
+                                display: none;
+                                position: absolute;
+                                max-width: 200px;
+                                border: 1px solid;
+                                border-radius: 5px;
+                                padding: 5px;
+                                font-size: 0.8em;
+                                color: white;
+                                background-color: rgb(0, 86, 102);       
+                                white-space: nowrap;          
+                            }
+                        }
+                        
+                        .aiFillGithubBack .aiFillGithubBackText,
+                        .aiOutlineMailBack .aiOutlineMailBackText,
+                        .riKakaoTalkFillBack .riKakaoTalkFillBackText,
+                        .aiFillPhoneBack .aiFillPhoneBackText {
+                            display: block;
                         }
                     }
                     
@@ -356,8 +381,11 @@ export default function Home() {
                         </button><br/>
 
                         <div className="socialMediaIcon">
-                            <span className="aiFillGithub">
+                            <span className="aiFillGithub" onClick={e => {
+                                e.preventDefault();
 
+                                router.push("https://github.com/juhwannn");
+                            }}>
                                 <div className="aiFillGithubFront">
                                     <AiFillGithub size="35"/>
                                 </div>
@@ -374,6 +402,10 @@ export default function Home() {
 
                                 <div className="aiOutlineMailBack">
                                     <AiOutlineMail size="35"/>
+
+                                    <span className="aiOutlineMailBackText">
+                                        algorithm123@naver.com
+                                    </span>
                                 </div>
                             </span>
 
@@ -384,6 +416,10 @@ export default function Home() {
 
                                 <div className="riKakaoTalkFillBack">
                                     <RiKakaoTalkFill size="35"/>
+
+                                    <span className="riKakaoTalkFillBackText">
+                                        algorithm123
+                                    </span>
                                 </div>
                             </span>
 
@@ -394,6 +430,10 @@ export default function Home() {
 
                                 <div className="aiFillPhoneBack">
                                     <AiFillPhone size="35"/>
+
+                                    <span className="aiFillPhoneBackText">
+                                        7650&#45;0350
+                                    </span>
                                 </div>
                             </span>
                         </div>
