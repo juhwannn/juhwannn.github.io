@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Image from "next/image";
 // import ReactQuill from "react-quill";
 // import 'react-quill/dist/quill.snow.css';
+import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
+import { RiKakaoTalkFill } from "react-icons/ri";
 
 const leftColor = "#707070";
 const rightColor = "#FFF";
@@ -132,6 +134,11 @@ const Root = styled.div`
                 font-weight: lighter;
                 
                 margin-bottom: 50px;
+            }
+            
+            .socialMediaIcon {
+                margin-top: 30px;
+                
             }
             
             button {
@@ -280,6 +287,13 @@ export default function Home() {
                     }}>
                         MENU4
                     </button><br/>
+
+                    <div className="socialMediaIcon">
+                        <AiFillGithub size="35" style={{marginRight: "50px"}}/>
+                        <AiOutlineMail size="35" style={{marginRight: "50px"}}/>
+                        <RiKakaoTalkFill size="35" style={{marginRight: "50px"}}/>
+                        <AiFillPhone size="35"/>
+                    </div>
                 </div>
             </div>
 
