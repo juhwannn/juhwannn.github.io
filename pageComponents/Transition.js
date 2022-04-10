@@ -25,6 +25,8 @@ const getTransitionStyles = {
 };
 
 const Transition = ({ children, location }) => {
+    const nodeRef = React.useRef(null)
+
     return (
         <TransitionGroup style={{ position: "relative" }}>
             <ReactTransition
@@ -33,6 +35,7 @@ const Transition = ({ children, location }) => {
                     enter: TIMEOUT,
                     exit: TIMEOUT,
                 }}
+                nodeRef={nodeRef}
             >
                 {status => (
                     <div
