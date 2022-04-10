@@ -363,7 +363,7 @@ export default function Home() {
                                 </div>
 
                                 <div className="aiFillGithubBack">
-                                    <AiFillGithub size="35" filter="invert"/>
+                                    <AiFillGithub size="35"/>
                                 </div>
                             </span>
 
@@ -373,17 +373,17 @@ export default function Home() {
                                 </div>
 
                                 <div className="aiOutlineMailBack">
-                                    <AiOutlineMail size="35" />
+                                    <AiOutlineMail size="35"/>
                                 </div>
                             </span>
 
                             <span className="riKakaoTalkFill">
                                 <div className="riKakaoTalkFillFront">
-                                    <RiKakaoTalkFill size="35" />
+                                    <RiKakaoTalkFill size="35"/>
                                 </div>
 
                                 <div className="riKakaoTalkFillBack">
-                                    <RiKakaoTalkFill size="35" />
+                                    <RiKakaoTalkFill size="35"/>
                                 </div>
                             </span>
 
