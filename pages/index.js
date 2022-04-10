@@ -20,9 +20,10 @@ const MainSubject = styled.div`
 
 const Root = styled.div`
     background: linear-gradient(to right, ${leftColor} 50%, ${rightColor} 50%);
+    height: 100vh;
     
     .header {
-        height: 50px;
+        height: 5vh;
         
         .leftHeader {
             float: left;
@@ -56,7 +57,7 @@ const Root = styled.div`
     }
     
     .body {
-        height: 800px;
+        height: 90vh;
         
         .leftBody {
             float: left;
@@ -148,6 +149,7 @@ const Root = styled.div`
             }
             button:hover {
                 box-shadow: 0 80px 0 0 rgba(0,86,102,0.5) inset, 0 -80px 0 0 rgba(0,86,102,0.5) inset;
+                color: white;
             }
         }
         .rightBody::after {
@@ -163,6 +165,7 @@ const Root = styled.div`
     }
     
     .footer {
+        height: 5vh;
         .leftFooter {
             float: left;
             
@@ -251,23 +254,23 @@ export default function Home() {
 
                         router.push("/info");
                     }}>
-                        MENU1
+                        INFO
                     </button><br/>
 
                     <button onClick={e => {
                         e.preventDefault();
 
-                        alert("MENU2");
+                        alert("PROJECT");
                     }}>
-                        MENU2
+                        PROJECT
                     </button><br/>
 
                     <button onClick={e => {
                         e.preventDefault();
 
-                        alert("MENU3");
+                        alert("KNOWLEDGE");
                     }}>
-                        MENU3
+                        KNOWLEDGE
                     </button><br/>
 
                     <button onClick={e => {
