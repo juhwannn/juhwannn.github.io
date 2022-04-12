@@ -54,8 +54,14 @@ const Root = styled.div`
         .leftFooter {
             float: left;
             
+            font-size: 10px;
+            font-weight: lighter;
+            text-align: center;
+            
             width: 50%;
             height: 100%;
+            
+            
         }
         
         .rightFooter {
@@ -125,11 +131,11 @@ const Layout =
                     <div className="footer">
                         <div className="footer">
                             <div className="leftFooter">
-                                leftFooter
+                                Copyright 2022. juhwannn all rights reserved.
                             </div>
 
                             <div className="rightFooter">
-                                rightFooter
+
                             </div>
                         </div>
                     </div>
