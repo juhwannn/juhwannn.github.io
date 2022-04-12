@@ -130,9 +130,11 @@ const Layout =
 
                     <div className="footer">
                         <div className="footer">
-                            <div className="leftFooter">
-                                Copyright 2022. juhwannn all rights reserved.
-                            </div>
+                            <label>
+                                <div className="leftFooter">
+                                    Copyright 2022. juhwannn all rights reserved.
+                                </div>
+                            </label>
 
                             <div className="rightFooter">
 
