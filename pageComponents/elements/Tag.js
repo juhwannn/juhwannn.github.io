@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Root = styled.div`
     line-height: initial;
-    background-color: ${v => (v.color)};
+    background-color: ${v => (v.bgColor)};
     display: inline-block;
     
     border: #0070f3 none;
@@ -14,16 +14,18 @@ const Root = styled.div`
     
     cursor: pointer;
     
+    color: ${v => (v.fontColor)}; 
 `;
 
 export const Tag =
 ({
     text,
-    color
+    bgColor,
+    fontColor,
 }) => {
 
     return (
-        <Root color={color}>
+        <Root bgColor={bgColor} fontColor={fontColor}>
             {text}
         </Root>
     );
