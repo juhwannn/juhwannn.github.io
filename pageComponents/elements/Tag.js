@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Root = styled.div`
     line-height: initial;
-    background-color: #0070f3;
+    background-color: ${v => (v.color)};
     display: inline-block;
     
     border: #0070f3 none;
@@ -23,7 +23,7 @@ export const Tag =
 }) => {
 
     return (
-        <Root>
+        <Root color={color}>
             {text}
         </Root>
     );
