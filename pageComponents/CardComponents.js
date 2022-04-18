@@ -3,12 +3,11 @@ import React from "react";
 import { MdDeveloperMode } from "react-icons/md";
 import {Tag} from "./elements/Tag";
 
-const Root = styled.div`
+const Root = styled.span`
     
-    margin: 0 auto;
     .card {
-        width: 300px;
-        height: 350px;
+        width: 250px;
+        height: 300px;
         background-color: black;
         box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;
         
@@ -18,7 +17,7 @@ const Root = styled.div`
             width: 100%;
             height: 65%;
             
-            font-size: 35px;
+            font-size: 1.5rem;
             color: white;
         }
         
@@ -54,11 +53,12 @@ export const Card =
     cardSubject,
     devPeriod,
     tags,
+    Click,
 }) => {
 
     return (
         <Root>
-            <div className="card">
+            <div className="card" onClick={Click}>
                 <div className="cardSubject">
                     {cardSubject}
                 </div>
@@ -72,7 +72,7 @@ export const Card =
                     <div className="skillStack">
                         {
                             tags.map((v, i) => (
-                                <Tag text={v.tagText} color={v.tagColor}></Tag>
+                                <Tag key={i} text={v.tagText} bgColor={v.tagColor} fontColor={v.fontColor}/>
                             ))
                         }
                     </div>
