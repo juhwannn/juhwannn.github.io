@@ -6,12 +6,13 @@ const Root = styled.div`
 `;
 
 const project1 = ({
-
-}) => {
+                      visible,
+                      setVisible
+                  }) => {
 
     return (
-        <Root>
-
+        <Root style={{display: visible ? "block" : "none"}}>
+            222222
         </Root>
     );
 }
