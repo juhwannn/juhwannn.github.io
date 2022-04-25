@@ -4,8 +4,8 @@ import { MdDeveloperMode } from "react-icons/md";
 import {Tag} from "./elements/Tag";
 
 const Root = styled.span`
-    
     .card {
+        flex: 1;
         width: 250px;
         height: 300px;
         background-color: black;
@@ -53,12 +53,13 @@ export const Card =
     cardSubject,
     devPeriod,
     tags,
-    Click,
+    click,
+    float,
 }) => {
 
     return (
-        <Root>
-            <div className="card" onClick={Click}>
+        <Root float={float}>
+            <div className="card" onClick={click}>
                 <div className="cardSubject">
                     {cardSubject}
                 </div>
