@@ -9,68 +9,21 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import {LeftBody, RightBody} from "../pageComponents/Body";
 
-const MainSubject = styled.div`
-    font-size: 50px;
-    position: absolute;
-    left: 50%;
-    top: 3.5%;
-    transform: translateX(-50%);
-    background: linear-gradient(to left, ${LeftColor} 50%, ${RightColor} 50%);
-    -webkit-background-clip: text;
-    color: transparent;
-`;
-
 const Root = styled.div`
     background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
     
     .body {
-        
-        .imageSlide {
-            //overflow: hidden;
-            //font-size: 0;
-            //white-space: nowrap;
-            //width: 100%;
-            //height: 100%;
-            //transition: text-indent 500ms;
-            //position: relative;
-            display: flex;
-            justify-content: center;
-            
-            .image1 {
-                width: 600px;
-                height: 450px;
-                background-image: url("/images/A.png");
-                background-size: cover;
-                box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;
-            }
-            
-            //.image2 {
-            //    width: 600px;
-            //    height: 450px;
-            //    background-image: url("/images/B.png");
-            //    background-size: cover;
-            //    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;                    
-            //}
-            //
-            //.image3 {
-            //    width: 600px;
-            //    height: 450px;
-            //    background-image: url("/images/C.png");
-            //    background-size: cover;
-            //    box-shadow: 1px 1px 2px grey, 0 0 25px white, 0 0 5px lightgrey;                    
-            //}
-        }
-    
-        
         .introTitle {
             font-size: 30px;
             
             margin-bottom: 33px;
+            
+            color: ${LeftColor};
         }
     
         .introText {
             font-size: 18px;
-            
+            color: ${LeftColor};
             font-weight: lighter;
             
             margin-bottom: 50px;
@@ -184,40 +137,9 @@ export default function Home() {
 
     return (
         <Root>
-            <MainSubject>DevBlog</MainSubject>
-
             <div className="body">
                 <LeftBody>
-                    <div className="imageSlide">
-                        <div className="image1" onClick={e => {
-                            e.preventDefault();
 
-                            alert("이미지 슬라이드 추가 예정");
-                        }}/>
-                        <div className="image2"/>
-                        <div className="image3"/>
-                        {/*<Image*/}
-                        {/*    src="/images/A.png"*/}
-                        {/*    width="600"*/}
-                        {/*    height="450"*/}
-                        {/*    alt="logo"*/}
-                        {/*    className="image1"*/}
-                        {/*/>*/}
-                        {/*<Image*/}
-                        {/*    src="/images/B.png"*/}
-                        {/*    width="600"*/}
-                        {/*    height="450"*/}
-                        {/*    alt="logo"*/}
-                        {/*    className="image2"*/}
-                        {/*/>*/}
-                        {/*<Image*/}
-                        {/*    src="/images/C.png"*/}
-                        {/*    width="600"*/}
-                        {/*    height="450"*/}
-                        {/*    alt="logo"*/}
-                        {/*    className="image3"*/}
-                        {/*/>*/}
-                    </div>
                 </LeftBody>
 
                 <RightBody>
