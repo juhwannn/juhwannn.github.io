@@ -67,9 +67,12 @@ const Root = styled.div`
         .rightFooter {
             float: right;
             
+            font-size: 10px;
+            font-weight: lighter;
+            text-align: center;
+            
             width: 50%;
             height: 100%;
-            
         }
     }
     .footer::after {
@@ -132,13 +135,15 @@ const Layout =
                         <div className="footer">
                             <label>
                                 <div className="leftFooter">
-                                    Copyright 2022. juhwannn all rights reserved.
+
                                 </div>
                             </label>
 
-                            <div className="rightFooter">
-
-                            </div>
+                            <label>
+                                <div className="rightFooter">
+                                    Copyright 2022. juhwannn all rights reserved.
+                                </div>
+                            </label>
                         </div>
                     </div>
                 </Root>
