@@ -1,29 +1,25 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
-import styled from "styled-components";
-import Image from "next/image";
-// import ReactQuill from "react-quill";
-// import 'react-quill/dist/quill.snow.css';
+import styled, {keyframes} from "styled-components";
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import {LeftBody, RightBody} from "../pageComponents/Body";
+import Info from "../pageComponents/Info";
 
 const Root = styled.div`
-    background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
-    
     .body {
         .introTitle {
             font-size: 30px;
             
             margin-bottom: 33px;
             
-            color: ${LeftColor};
+            color: ${RightColor};
         }
     
         .introText {
             font-size: 18px;
-            color: ${LeftColor};
+            color: ${RightColor};
             font-weight: lighter;
             
             margin-bottom: 50px;
@@ -59,7 +55,7 @@ const Root = styled.div`
                     transform: rotateY(0deg);
                     position: absolute;
                     
-                    color: ${LeftColor};
+                    color: ${RightColor};
                 }
                 
                 .aiFillGithubBack,
@@ -132,17 +128,27 @@ const Root = styled.div`
     }
 `;
 
+const ClickAnimation = keyframes`
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+`;
 export default function Home() {
     const router = useRouter();
+
+    const [info, setInfo] = useState(false);
+    const [project, setProject] = useState(false);
+    const [knowledge, setKnowledge] = useState(false);
+
 
     return (
         <Root>
             <div className="body">
                 <LeftBody>
-
-                </LeftBody>
-
-                <RightBody>
                     <div className="introTitle">
                         개발자 안주환입니다.
                     </div>
@@ -154,7 +160,7 @@ export default function Home() {
                     <button onClick={e => {
                         e.preventDefault();
 
-                        router.push("/info");
+                        setInfo(true);
                     }}>
                         INFO
                     </button><br/>
@@ -162,7 +168,6 @@ export default function Home() {
                     <button onClick={e => {
                         e.preventDefault();
 
-                        router.push("/project");
                     }}>
                         PROJECT
                     </button><br/>
@@ -240,6 +245,10 @@ export default function Home() {
                             </div>
                         </span>
                     </div>
+                </LeftBody>
+
+                <RightBody>
+                    <Info/>
                 </RightBody>
             </div>
         </Root>
