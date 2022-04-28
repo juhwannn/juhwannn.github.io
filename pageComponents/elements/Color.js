@@ -1,4 +1,4 @@
 
-export const LeftColor = "#7F7F7F";
-export const RightColor = "#FFF";
+export const LeftColor = "#FFF";
+export const RightColor = "#7F7F7F";
 

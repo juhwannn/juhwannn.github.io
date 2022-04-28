@@ -4,9 +4,7 @@ import React from "react";
 
 function MyApp({Component, pageProps, router}) {
     return (
-        <Layout>
-            <Component {...pageProps} key={router.route}/>
-        </Layout>
+        <Component {...pageProps} key={router.route}/>
     );
 }
 
