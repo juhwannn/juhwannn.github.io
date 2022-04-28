@@ -7,11 +7,19 @@ import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import {LeftBody, RightBody} from "../pageComponents/Body";
 import Info from "../pageComponents/Info";
 
-const Root = styled.div`
-    background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%); 
+const clickMove = keyframes`
+    0% {
+        right: -100vw;
+    }
     
+    100% {
+        right: 0;
+    }
+`;
+
+const Root = styled.div`
     .left {
-        width: 50vw;
+        width: ${props => props.clickButton ? "50vw" : "100vw"};
         height: 100vh;
         float: left;
         
@@ -34,7 +42,7 @@ const Root = styled.div`
         }
         
         .leftBody {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "100vw"};
             height: 90vh;
             
             float: left;
@@ -176,7 +184,7 @@ const Root = styled.div`
         }
         
         .leftFooter {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "100vw"};
             height: 5vh;
             
             float: left;
@@ -193,16 +201,19 @@ const Root = styled.div`
     }
     
     .right {
+        width: ${props => props.clickButton ? "50vw" : "0vw"};
+        animation: ${clickMove} 2s 1s infinite;
         float: right;
         
-        width: 50vw;
         height: 100vh;
         
         color: ${LeftColor};
         background: ${RightColor};
         
+        display: ${props => props.clickButton ? "block" : "none"};
+        
         .rightHeader {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 5vh;
             
             float: right;
@@ -220,7 +231,7 @@ const Root = styled.div`
         }
         
         .rightBody {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 90vh;
             
             float: right;
@@ -244,7 +255,7 @@ const Root = styled.div`
         }
         
         .rightFooter {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 5vh;
             
             float: right;
@@ -307,7 +318,7 @@ export default function Home() {
     }, [router.pathname]);
 
     return (
-        <Root backgroundColor={backgroundColor}>
+        <Root backgroundColor={backgroundColor} clickButton={clickButton}>
             <div className="left">
                 <div className="leftHeader">
                     안주환 &nbsp;|&nbsp; 개발자
@@ -328,7 +339,7 @@ export default function Home() {
 
                             setInfo(true);
                             setBackgroundColor(RightColor);
-                            setClickButton(true);
+                            setClickButton(!clickButton);
                         }}>
                             INFO
                         </button><br/>
