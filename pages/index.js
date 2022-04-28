@@ -7,21 +7,16 @@ import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import {LeftBody, RightBody} from "../pageComponents/Body";
 import Info from "../pageComponents/Info";
 
-const clickMove = keyframes`
-    0% {
-        right: -100vw;
-    }
-    
-    100% {
-        right: 0;
-    }
-`;
+const transitionSec = "1.5s";
 
 const Root = styled.div`
     .left {
         width: ${props => props.clickButton ? "50vw" : "100vw"};
         height: 100vh;
         float: left;
+        
+        transition-property: width;
+        transition-duration: ${transitionSec};
         
         .leftHeader {
             width: 50vw;
@@ -45,6 +40,8 @@ const Root = styled.div`
             width: ${props => props.clickButton ? "50vw" : "100vw"};
             height: 90vh;
             
+            transition-duration: ${transitionSec};
+            
             float: left;
     
             text-align: center;
@@ -59,6 +56,8 @@ const Root = styled.div`
             }
             
             .leftContent {
+                transition-duration: ${transitionSec};
+                
                 display: table-cell;
                 vertical-align: middle;
                 
@@ -169,7 +168,6 @@ const Root = styled.div`
                     border: none;
                     
                     margin-bottom: 5px;
-                    background: ${props => props.testColor};
                     transition:all 0.9s;
                 }
                 button:active {
@@ -187,6 +185,8 @@ const Root = styled.div`
             width: ${props => props.clickButton ? "50vw" : "100vw"};
             height: 5vh;
             
+            transition-duration: ${transitionSec};
+            
             float: left;
             
             font-size: 10px;
@@ -202,7 +202,7 @@ const Root = styled.div`
     
     .right {
         width: ${props => props.clickButton ? "50vw" : "0vw"};
-        animation: ${clickMove} 2s 1s infinite;
+        
         float: right;
         
         height: 100vh;
@@ -210,11 +210,15 @@ const Root = styled.div`
         color: ${LeftColor};
         background: ${RightColor};
         
-        display: ${props => props.clickButton ? "block" : "none"};
+        visibility: ${props => props.clickButton ? "visible" : "hidden"};
+        transition-property: visibility, width;
+        transition-duration: ${transitionSec},${transitionSec};
         
         .rightHeader {
             width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 5vh;
+            
+            transition-duration: ${transitionSec};
             
             float: right;
             text-align: right;
@@ -233,6 +237,8 @@ const Root = styled.div`
         .rightBody {
             width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 90vh;
+            
+            transition-duration: ${transitionSec};
             
             float: right;
             
@@ -257,6 +263,8 @@ const Root = styled.div`
         .rightFooter {
             width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 5vh;
+            
+            transition-duration: ${transitionSec};
             
             float: right;
             
