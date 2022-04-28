@@ -1,6 +1,5 @@
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
-import Transition from "./Transition";
 import styled from "styled-components";
 import {LeftColor, RightColor} from "./elements/Color";
 
@@ -113,41 +112,37 @@ const Layout =
     }, [router.pathname]);
 
     return (
-            <Transition
-                location={router.pathname}
-            >
-                <Root>
-                    <div className="header">
-                        <div className="leftHeader">
-                            안주환 &nbsp;|&nbsp; 개발자
+        <Root>
+            <div className="header">
+                <div className="leftHeader">
+                    안주환 &nbsp;|&nbsp; 개발자
+                </div>
+
+                <div className="rightHeader">
+                    {menuName}
+                </div>
+            </div>
+
+            <div className="body">
+                {children}
+            </div>
+
+            <div className="footer">
+                <div className="footer">
+                    <label>
+                        <div className="leftFooter">
+                            Copyright 2022. juhwannn all rights reserved.
                         </div>
+                    </label>
 
-                        <div className="rightHeader">
-                            {menuName}
+                    <label>
+                        <div className="rightFooter">
+
                         </div>
-                    </div>
-
-                    <div className="body">
-                        {children}
-                    </div>
-
-                    <div className="footer">
-                        <div className="footer">
-                            <label>
-                                <div className="leftFooter">
-
-                                </div>
-                            </label>
-
-                            <label>
-                                <div className="rightFooter">
-                                    Copyright 2022. juhwannn all rights reserved.
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </Root>
-            </Transition>
+                    </label>
+                </div>
+            </div>
+        </Root>
     );
 }
 
