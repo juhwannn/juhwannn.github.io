@@ -5,7 +5,7 @@ const Root = styled.div`
 
 `;
 
-const Info =
+const Knowledge =
 ({
     visible,
     setVisible
@@ -13,9 +13,9 @@ const Info =
 
     return (
         <Root style={{display: visible ? "block" : "none"}}>
-            Info.js
+            Knowledge
         </Root>
-    )
-};
+    );
+}
 
-export default Info;
+export default Knowledge;
