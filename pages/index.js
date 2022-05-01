@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useRouter} from "next/router";
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
-import {LeftBody, RightBody} from "../pageComponents/Body";
 import Info from "../pageComponents/Info";
+import Project from "../pageComponents/Project";
+import Knowledge from "../pageComponents/Knowledge";
 
-const transitionSec = "1.5s";
+const transitionSec = "1000ms";
 
 const Root = styled.div`
     .left {
@@ -210,14 +211,14 @@ const Root = styled.div`
         color: ${LeftColor};
         background: ${RightColor};
         
-        visibility: ${props => props.clickButton ? "visible" : "hidden"};
-        transition-property: visibility, width;
-        transition-duration: ${transitionSec},${transitionSec};
+        transition-property: width;
+        transition-duration: ${transitionSec};
         
         .rightHeader {
-            width: ${props => props.clickButton ? "50vw" : "0vw"};
+            width: 50vw;
             height: 5vh;
             
+            color: ${props => props.clickButton ? `${LeftColor}` : `${RightColor}`};
             transition-duration: ${transitionSec};
             
             float: right;
@@ -271,7 +272,6 @@ const Root = styled.div`
             font-size: 10px;
             font-weight: lighter;
             text-align: center;
-            
         }
         .rightFooter::after {
             display: block;
@@ -281,52 +281,50 @@ const Root = styled.div`
     }
 `;
 
-const ClickAnimation = keyframes`
-    0% {
-        opacity: 0;
-    }
-    40% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-`;
+const ButtonClickHandle =
+(
+    clickButton,
+    setClickButton,
+    visible,
+    setVisible,
+    menuName,
+    setMenuName
+) => {
 
-function MenuFactory(path, menuName, setMenuName) {
+    console.log("clickButton : " + clickButton);
 
-    setMenuName("ERROR");
-
-    if (path === "/") {
-        setMenuName("홈");
-    }
-
-    if (path === "/info") {
-        setMenuName("정보");
+    if (clickButton) {
+        setTimeout(() => {
+            setMenuName("홈");
+            setClickButton(!visible);
+            setVisible(!visible);
+        }, parseInt(transitionSec));
     }
 
-    if (path === "/project") {
-        setMenuName("프로젝트");
+    if (!clickButton) {
+        setTimeout(() => {
+            setMenuName(menuName);
+            setClickButton(!visible);
+        }, parseInt(transitionSec));
     }
-};
 
+    return;
+}
 
 export default function Home() {
     const router = useRouter();
 
-    const [info, setInfo] = useState(false);
-    const [project, setProject] = useState(false);
-    const [knowledge, setKnowledge] = useState(false);
+    const [infoVisible, setInfoVisible] = useState(false);
+    const [projectVisible, setProjectVisible] = useState(false);
+    const [knowledgeVisible, setKnowledgeVisible] = useState(false);
 
-    const [backgroundColor, setBackgroundColor] = useState("white");
     const [clickButton, setClickButton] = useState(false);
 
-    const [menuName, setMenuName] = useState("");
+    const [menuName, setMenuName] = useState("홈");
 
-    useEffect(() => {
-        MenuFactory(router.pathname, menuName, setMenuName);
-    }, [router.pathname]);
 
     return (
-        <Root backgroundColor={backgroundColor} clickButton={clickButton}>
+        <Root clickButton={clickButton}>
             <div className="left">
                 <div className="leftHeader">
                     안주환 &nbsp;|&nbsp; 개발자
@@ -345,9 +343,13 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            setInfo(true);
-                            setBackgroundColor(RightColor);
                             setClickButton(!clickButton);
+
+                            setInfoVisible(true);
+                            setProjectVisible(false);
+                            setKnowledgeVisible(false);
+
+                            ButtonClickHandle(clickButton, setClickButton, infoVisible, setInfoVisible, "INFO", setMenuName);
                         }}>
                             INFO
                         </button><br/>
@@ -355,6 +357,13 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
+                            setClickButton(!clickButton);
+
+                            setInfoVisible(false);
+                            setProjectVisible(true);
+                            setKnowledgeVisible(false);
+
+                            ButtonClickHandle(clickButton, setClickButton, projectVisible, setProjectVisible, "PROJECT", setMenuName);
                         }}>
                             PROJECT
                         </button><br/>
@@ -362,7 +371,13 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            alert("KNOWLEDGE");
+                            setClickButton(!clickButton);
+
+                            setInfoVisible(false);
+                            setProjectVisible(false);
+                            setKnowledgeVisible(true);
+
+                            ButtonClickHandle(clickButton, setClickButton, knowledgeVisible, setKnowledgeVisible, "KNOWLEDGE", setMenuName);
                         }}>
                             KNOWLEDGE
                         </button><br/>
@@ -370,7 +385,7 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            alert("MENU4");
+
                         }}>
                             MENU4
                         </button><br/>
@@ -447,7 +462,9 @@ export default function Home() {
 
                 <div className="rightBody">
                     <div className="rightContent">
-                        <Info/>
+                        <Info visible={infoVisible} setVisible={setInfoVisible}/>
+                        <Project visible={projectVisible} setVisible={setProjectVisible}/>
+                        <Knowledge visible={knowledgeVisible} setVisible={setKnowledgeVisible}/>
                     </div>
                 </div>
 
