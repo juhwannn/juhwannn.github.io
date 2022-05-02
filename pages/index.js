@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
@@ -9,6 +9,11 @@ import Project from "../pageComponents/Project";
 import Knowledge from "../pageComponents/Knowledge";
 
 const transitionSec = "1000ms";
+
+const grow = keyframes`
+    from { transform: translateY(3em) }
+    to { transform: translateY(0) }
+`
 
 const Root = styled.div`
     .left {
@@ -203,16 +208,15 @@ const Root = styled.div`
     
     .right {
         width: ${props => props.clickButton ? "50vw" : "0vw"};
+        height: 100vh;
         
         float: right;
-        
-        height: 100vh;
         
         color: ${LeftColor};
         background: ${RightColor};
         
-        transition-property: width;
-        transition-duration: ${transitionSec};
+        transition-property: width, color;
+        transition-duration: ${transitionSec}, ${transitionSec};
         
         .rightHeader {
             width: 50vw;
@@ -228,6 +232,13 @@ const Root = styled.div`
             
             padding-right: 30px;
             padding-top: 30px;
+            
+            overflow-y: hidden;
+
+            .menuName {
+                animation-name: ${grow};
+                animation-duration: 1s;            
+            }
         }
         .rightHeader::after {
             display: block;
@@ -291,9 +302,7 @@ const ButtonClickHandle =
     setMenuName
 ) => {
 
-    console.log("clickButton : " + clickButton);
-
-    if (clickButton) {
+    if (clickButton && !visible) {
         setTimeout(() => {
             setMenuName("홈");
             setClickButton(!visible);
@@ -301,7 +310,7 @@ const ButtonClickHandle =
         }, parseInt(transitionSec));
     }
 
-    if (!clickButton) {
+    if (!clickButton && visible) {
         setTimeout(() => {
             setMenuName(menuName);
             setClickButton(!visible);
@@ -457,7 +466,9 @@ export default function Home() {
 
             <div className="right">
                 <div className="rightHeader">
-                    {menuName}
+                    <div className="menuName">
+                        {menuName}
+                    </div>
                 </div>
 
                 <div className="rightBody">
