@@ -9,12 +9,18 @@ const Root = styled.div`
     border: #0070f3 none;
     border-radius: 3px;
     
+    box-shadow: 2px 2px 2px 2px white;
+    
     margin-right: 5px;
     padding: 1px 3px 1px 3px;
     
     cursor: pointer;
     
-    color: ${v => (v.fontColor)}; 
+    color: ${v => (v.fontColor)};
+    
+    >label {
+        cursor: pointer;
+    }
 `;
 
 export const Tag =
