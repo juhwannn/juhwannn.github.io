@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import {BiRocket} from "react-icons/Bi";
-import {SiNextdotjs, SiExpress, SiJavascript, SiJenkins, SiMariadb, SiMysql, SiSequelize, SiSubversion,} from "react-icons/Si";
+import {SiNextdotjs, SiExpress, SiTheconversation, SiJavascript, SiJenkins, SiMariadb, SiMysql, SiSequelize, SiSubversion,} from "react-icons/Si";
 import {SiReact} from "react-icons/Si";
 import {DiCss3, DiUbuntu} from "react-icons/Di";
 import {AiFillGithub} from "react-icons/Ai";
@@ -14,6 +14,9 @@ import {MdSchool} from "react-icons/Md";
 import {LeftColor, RightColor} from "./elements/Color";
 
 const Root = styled.div`
+    svg {
+        vertical-align: bottom;
+    }
     text-align: left;
     
     padding-left: 10vw;
@@ -75,9 +78,20 @@ const Info =
         <Root style={{display: visible ? "block" : "none"}}>
             <div>
                 <Header1>
-                    <BiRocket/>
-                    소개글
+                    <SiTheconversation/>
+                    TMI
                 </Header1>
+
+                <Header3>
+                    감성적인 것과 철학적인 것을 좋아합니다. <br/>
+                    인생이 묻어나온 것을 좋아합니다. <br/>
+                    강아지보단 고양이를 좋아합니다. <br/>
+                    랩퍼 창모를 좋아합니다. <br/>
+                    MBTI 는 INFP 입니다. <br/>
+                    <br/>
+
+                     개인의 생각을 무시하는 것을 싫어합니다.
+                </Header3>
             </div>
 
             <hr/>
