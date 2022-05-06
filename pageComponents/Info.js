@@ -10,28 +10,59 @@ import {TiHtml5} from "react-icons/Ti";
 import {GrCentos, GrOracle} from "react-icons/Gr";
 import {Tag} from "./elements/Tag";
 import {BsKeyboard} from "react-icons/Bs";
+import {MdSchool} from "react-icons/Md";
+import {LeftColor, RightColor} from "./elements/Color";
 
 const Root = styled.div`
+    text-align: left;
+    
+    padding-left: 10vw;
+    padding-right: 10vw;
+    
     overflow: hidden;
     
     >hr {
-        width: 30vw;
         margin-top: 3vh;
         margin-bottom: 3vh;
+    }
+    
+    .techSkill {
+        .myList {
+            padding-left: 3vw;
+            padding-right: 2vw;
+            padding-bottom: 2vh;
+            
+            display: inline-block;
+            
+            color: ${RightColor};
+            background: ${LeftColor};
+            
+            border-radius: 5px;
+            
+            width: 100%;
+            height: auto;
+            
+            li {
+                list-style-type: square;
+                
+                margin-top: 1vh;
+            }
+        }
     }
 `;
 
 const Header1 = styled.h1`
-    text-align: left;
-    margin-left: 10vw;
+    font-size: 2rem;
 `;
 
 const Header2 = styled.h2`
-
+    color: #070707;
+    
+    font-size: 1.5rem;
 `;
 
 const Header3 = styled.h3`
-
+    font-size: 1.17rem;
 `;
 
 const Info =
@@ -51,123 +82,184 @@ const Info =
 
             <hr/>
 
-            <div>
+            <div className="techSkill">
                 <Header1>
                     <BsKeyboard/>
-                    기술 스택
+                    TechSkills
                 </Header1>
 
                 <div>
-                    <Header2>
-                        FrontEnd
-                    </Header2>
+                    <ul className="myList">
+                        <Header2>
+                            FrontEnd
+                        </Header2>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiNextdotjs color={"black"}/>Next.js
-                    </Tag>
+                        <hr/>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiReact color={"blue"}/>React.js
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"black"}>
+                                <SiNextdotjs color={"black"}/>Next.js
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiJavascript color={"black"}/>Javascript
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#7DD1EF"}>
+                                <SiReact color={"#7DD1EF"}/>React.js
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <TiHtml5 color={"black"}/>HTML
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#E8D44C"}>
+                                <SiJavascript color={"#E8D44C"}/>Javascript
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <DiCss3 color={"black"}/>CSS
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#C85333"}>
+                                <TiHtml5 color={"#C85333"}/>HTML
+                            </Tag>
+                        </li>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#2866B1"}>
+                                <DiCss3 color={"#2866B1"}/>CSS
+                            </Tag>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <Header2>
-                        BackEnd
-                    </Header2>
+                    <ul className="myList">
+                        <Header2>
+                            BackEnd
+                        </Header2>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <FaNode color={"black"}/>Node.js
-                    </Tag>
+                        <hr/>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiExpress color={"black"}/>Express.js
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#8CC046"}>
+                                <FaNode color={"#8CC046"}/>Node.js
+                            </Tag>
+                        </li>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"black"}>
+                                <SiExpress color={"black"}/>Express.js
+                            </Tag>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <Header2>
-                        CI/CD
-                    </Header2>
+                    <ul className="myList">
+                        <Header2>
+                            CI/CD
+                        </Header2>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiJenkins color={"black"}/>Jenkins
-                    </Tag>
+                        <hr/>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#B84138"}>
+                                <SiJenkins color={"#B84138"}/>Jenkins
+                            </Tag>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <Header2>
-                        VCS
-                    </Header2>
+                    <ul className="myList">
+                        <Header2>
+                            VCS
+                        </Header2>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <AiFillGithub color={"black"}/>GitHub
-                    </Tag>
+                        <hr/>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiSubversion color={"black"}/>SVN
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"black"}>
+                                <AiFillGithub color={"black"}/>GitHub
+                            </Tag>
+                        </li>
 
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#7D94BB"}>
+                                <SiSubversion color={"#7D94BB"}/>SVN
+                            </Tag>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <Header2>
-                        Database
-                    </Header2>
+                    <ul className="myList">
+                        <Header2>
+                            Database
+                        </Header2>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiMysql color={"black"}/>Mysql
-                    </Tag>
+                        <hr/>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiMariadb color={"black"}/>Mariadb
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#2D6C8B"}>
+                                <SiMysql color={"#2D6C8B"}/>Mysql
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <GrOracle color={"black"}/>Oracle
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#113140"}>
+                                <SiMariadb color={"#113140"}/>Mariadb
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiSequelize color={"black"}/>Sequelize
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#B6624E"}>
+                                <GrOracle color={"#B6624E"}/>Oracle
+                            </Tag>
+                        </li>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#3574AB"}>
+                                <SiSequelize color={"#3574AB"}/>Sequelize
+                            </Tag>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <Header2>
-                        Server Infra
-                    </Header2>
+                    <ul className="myList">
+                        <Header2>
+                            Server Infra
+                        </Header2>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <FaAws color={"black"}/>AWS
-                    </Tag>
+                        <hr/>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <DiUbuntu color={"black"}/>Ubuntu
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#DF933D"}>
+                                <FaAws color={"#DF933D"}/>AWS
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <GrCentos color={"black"}/>Centos
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#C34E29"}>
+                                <DiUbuntu color={"#C34E29"}/>Ubuntu
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <FaWindows color={"black"}/>Windows
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#BDC388"}>
+                                <GrCentos color={"#BDC388"}/>Centos
+                            </Tag>
+                        </li>
 
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <FaDocker color={"black"}/>Docker
-                    </Tag>
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#2D72C5"}>
+                                <FaWindows color={"#2D72C5"}/>Windows
+                            </Tag>
+                        </li>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"#438DDA"}>
+                                <FaDocker color={"#438DDA"}/>Docker
+                            </Tag>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -175,6 +267,7 @@ const Info =
 
             <div>
                 <Header1>
+                    <MdSchool/>
                     Education
                 </Header1>
             </div>
