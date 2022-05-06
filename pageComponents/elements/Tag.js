@@ -19,14 +19,16 @@ const Root = styled.div`
 
 export const Tag =
 ({
-    text,
+    children,
     bgColor,
     fontColor,
 }) => {
 
     return (
         <Root bgColor={bgColor} fontColor={fontColor}>
-            {text}
+            <label>
+                {children}
+            </label>
         </Root>
     );
 };
