@@ -9,9 +9,9 @@ const Root = styled.div`
     border: #0070f3 none;
     border-radius: 3px;
     
-    box-shadow: 2px 2px 2px 2px white;
+    box-shadow: 2px 2px 2px 2px ${v => (v.shadowColor)};
     
-    margin-right: 5px;
+    margin-right: 0.5vw;
     padding: 1px 3px 1px 3px;
     
     cursor: pointer;
@@ -31,7 +31,7 @@ export const Tag =
 }) => {
 
     return (
-        <Root bgColor={bgColor} fontColor={fontColor}>
+        <Root bgColor={bgColor} shadowColor={bgColor} fontColor={fontColor}>
             <label>
                 {children}
             </label>
