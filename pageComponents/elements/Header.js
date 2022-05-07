@@ -22,5 +22,4 @@ export const Header3 = styled.h3`
 export const Decryption = styled.span`
     font-size: 18px;
     color: ${RightColor};
-    font-weight: lighter;
 `;
