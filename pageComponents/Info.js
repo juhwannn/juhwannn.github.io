@@ -12,6 +12,7 @@ import {MdSchool} from "react-icons/Md";
 import {LeftColor, RightColor} from "./elements/Color";
 import {Header1, Header2, Header3} from "./elements/Header";
 import {Tag} from "./elements/Tag";
+import {UnorderedList} from "./elements/UnorderedList";
 
 const Root = styled.div`
     svg {
@@ -114,7 +115,7 @@ const Info =
                 </Header1>
 
                 <div>
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             FrontEnd
                         </Header2>
@@ -150,11 +151,11 @@ const Info =
                                 <DiCss3 color={"#2866B1"}/>CSS
                             </Tag>
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
 
                 <div>
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             BackEnd
                         </Header2>
@@ -184,11 +185,11 @@ const Info =
                                 <SiExpress color={"black"}/>Spring Framework
                             </Tag>
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
 
                 <div>
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             CI/CD
                         </Header2>
@@ -200,11 +201,11 @@ const Info =
                                 <SiJenkins color={"#B84138"}/>Jenkins
                             </Tag>
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
 
                 <div>
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             VCS
                         </Header2>
@@ -222,11 +223,11 @@ const Info =
                                 <SiSubversion color={"#7D94BB"}/>SVN
                             </Tag>
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
 
                 <div>
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             Database
                         </Header2>
@@ -256,11 +257,11 @@ const Info =
                                 <SiSequelize color={"#3574AB"}/>Sequelize
                             </Tag>
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
 
                 <div>
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             Server Infra
                         </Header2>
@@ -296,7 +297,7 @@ const Info =
                                 <FaDocker color={"#438DDA"}/>Docker
                             </Tag>
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
             </div>
 
@@ -321,7 +322,7 @@ const Info =
                     전공평균 <Tag bgColor={"white"} fontColor={RightColor}>3.0 / 4.5</Tag> <br/>
 
                     전공 이수과목
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             2019
                         </Header2>
@@ -347,9 +348,9 @@ const Info =
                         <li>
                             보안프로그래밍
                         </li>
-                    </ul>
+                    </UnorderedList>
 
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             2018
                         </Header2>
@@ -387,9 +388,9 @@ const Info =
                         <li>
                             운영체제보안
                         </li>
-                    </ul>
+                    </UnorderedList>
 
-                    <ul className="myList">
+                    <UnorderedList>
                         <Header2>
                             2017
                         </Header2>
@@ -423,7 +424,7 @@ const Info =
                         <li>
                             암호학
                         </li>
-                    </ul>
+                    </UnorderedList>
                 </div>
             </div>
         </Root>
