@@ -4,6 +4,9 @@ import {Decryption, Header1, Header2} from "./elements/Header";
 import {GoProject} from "react-icons/Go";
 import {UnorderedList} from "./elements/UnorderedList";
 import {Tag} from "./elements/Tag";
+import {BsFillPersonFill} from "react-icons/Bs";
+import {FaRegBuilding} from "react-icons/Fa";
+import {RiTeamFill} from "react-icons/Ri";
 
 const Root = styled.div`
     svg {
@@ -32,8 +35,102 @@ const Project =
     return (
         <Root style={{display: visible ? "block" : "none"}}>
             <Header1>
-                <GoProject/>
-                project list
+                <BsFillPersonFill/>
+                personal
+            </Header1>
+
+            <UnorderedList>
+                <Header2>
+                    🚀 Github.io
+                </Header2>
+
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Next.js</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>gh-pages</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Github Action</Tag>
+
+                <br/>
+                <br/>
+                <Decryption>
+                    깃헙 블로그입니다.
+                </Decryption>
+            </UnorderedList>
+
+            <UnorderedList>
+                <Header2>
+                    🧨 upbittrading
+                </Header2>
+
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Next.js</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>gh-pages</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Github Action</Tag>
+
+                <br/>
+                <br/>
+                <Decryption>
+                    upbittrading
+                </Decryption>
+            </UnorderedList>
+
+            <UnorderedList>
+                <Header2>
+                    🗼 automatic-lotto
+                </Header2>
+
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Next.js</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>gh-pages</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Github Action</Tag>
+
+                <br/>
+                <br/>
+                <Decryption>
+                    automatic-lotto
+                </Decryption>
+            </UnorderedList>
+
+            <UnorderedList>
+                <Header2>
+                    🚃 mychatbot
+                </Header2>
+
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Next.js</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>gh-pages</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Github Action</Tag>
+
+                <br/>
+                <br/>
+                <Decryption>
+                    mychatbot
+                </Decryption>
+            </UnorderedList>
+
+            <hr/>
+
+            <Header1>
+                <RiTeamFill/>
+                team
+            </Header1>
+
+            <UnorderedList>
+                <Header2>
+                    🎖️ twitch_miner
+                </Header2>
+
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Next.js</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>gh-pages</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Github Action</Tag>
+
+                <br/>
+                <br/>
+                <Decryption>
+                    twitch_miner
+                </Decryption>
+            </UnorderedList>
+
+            <hr/>
+
+            <Header1>
+                <FaRegBuilding/>
+                company
             </Header1>
 
             <UnorderedList>
