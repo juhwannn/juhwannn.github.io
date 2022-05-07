@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import React from "react";
-import {OpacityZeroToOne, OpacityTime} from "./elements/Animation";
+import {FadeIn, OpacityTime} from "./elements/Animation";
 
 const Root = styled.div`
-    animation: ${OpacityZeroToOne} ${OpacityTime};
+    animation: ${FadeIn} ${OpacityTime};
     
 `;
 

@@ -13,10 +13,10 @@ import {LeftColor, RightColor} from "./elements/Color";
 import {Decryption, Header1, Header2, Header3} from "./elements/Header";
 import {Tag} from "./elements/Tag";
 import {UnorderedList} from "./elements/UnorderedList";
-import {OpacityOneToZero, OpacityZeroToOne, OpacityTime} from "./elements/Animation";
+import {FadeOut, FadeIn, OpacityTime} from "./elements/Animation";
 
 const Root = styled.div`
-    animation: ${OpacityZeroToOne} ${OpacityTime};
+    animation: ${FadeIn} ${OpacityTime};
     
     svg {
         vertical-align: bottom;
