@@ -21,6 +21,7 @@ const Root = styled.div`
     svg {
         vertical-align: bottom;
     }
+    
     text-align: left;
     
     padding-left: 10vw;
@@ -42,7 +43,7 @@ const Info =
 }) => {
 
     return (
-        <Root style={{display: visible ? "block" : "none"}} visible={visible}>
+        <Root style={{display: visible ? "block" : "none"}}>
             <Header1>
                 <SiTheconversation/>
                 TMI
