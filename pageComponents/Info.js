@@ -95,7 +95,7 @@ const Info =
                 </li>
 
                 <li>
-                    기술스택 : MySQL, JAVA, JavaScript, SpringFrameWork
+                    기술스택 : MySQL, JAVA, JavaScript, SpringFrameWork, Swift
                 </li>
             </UnorderedList>
 
