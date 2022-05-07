@@ -52,6 +52,30 @@ const Root = styled.div`
             }
         }
     }
+    
+    .education {
+        .myList {
+            padding-left: 3vw;
+            padding-right: 2vw;
+            padding-bottom: 2vh;
+            
+            display: inline-block;
+            
+            color: ${RightColor};
+            background: ${LeftColor};
+            
+            border-radius: 5px;
+            
+            width: 100%;
+            height: auto;
+            
+            li {
+                list-style-type: square;
+                
+                margin-top: 1vh;
+            }
+        }
+    }
 `;
 
 const Header1 = styled.h1`
@@ -159,6 +183,18 @@ const Info =
                         <li>
                             <Tag bgColor={"white"} fontColor={"black"}>
                                 <SiExpress color={"black"}/>Express.js
+                            </Tag>
+                        </li>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"black"}>
+                                <SiExpress color={"black"}/>JAVA
+                            </Tag>
+                        </li>
+
+                        <li>
+                            <Tag bgColor={"white"} fontColor={"black"}>
+                                <SiExpress color={"black"}/>Spring Framework
                             </Tag>
                         </li>
                     </ul>
@@ -279,11 +315,129 @@ const Info =
 
             <hr/>
 
-            <div>
+            <div className="education">
                 <Header1>
                     <MdSchool/>
                     Education
                 </Header1>
+
+                <div>
+                    <Header3>
+                        서울양천고등학교
+                    </Header3>
+
+                    2014.02 졸업 (이공계열)
+
+                    <Header3>
+                        서울호서전문학교 사이버해킹보안과
+                    </Header3>
+                    전공평균 <Tag bgColor={"white"} fontColor={RightColor}>3.0 / 4.5</Tag> <br/>
+
+                    전공 이수과목
+                    <ul className="myList">
+                        <Header2>
+                            2019
+                        </Header2>
+
+                        <hr/>
+
+                        <li>
+                            데이터베이스실습
+                        </li>
+
+                        <li>
+                            암호프로토콜
+                        </li>
+
+                        <li>
+                            네트워크프로그래밍
+                        </li>
+
+                        <li>
+                            알고리즘
+                        </li>
+
+                        <li>
+                            보안프로그래밍
+                        </li>
+                    </ul>
+
+                    <ul className="myList">
+                        <Header2>
+                            2018
+                        </Header2>
+
+                        <hr/>
+
+                        <li>
+                            어셈블리언어
+                        </li>
+
+                        <li>
+                            자바프로그래밍
+                        </li>
+
+                        <li>
+                            사이버포렌식실습
+                        </li>
+
+                        <li>
+                            웹프로그래밍실습
+                        </li>
+
+                        <li>
+                            통신망관리및운용
+                        </li>
+
+                        <li>
+                            해킹및바이러스
+                        </li>
+
+                        <li>
+                            모바일프로그래밍
+                        </li>
+
+                        <li>
+                            운영체제보안
+                        </li>
+                    </ul>
+
+                    <ul className="myList">
+                        <Header2>
+                            2017
+                        </Header2>
+
+                        <hr/>
+
+                        <li>
+                            Unix/Linux
+                        </li>
+
+                        <li>
+                            데이터베이스
+                        </li>
+
+                        <li>
+                            C언어Ⅰ
+                        </li>
+
+                        <li>
+                            이산수학
+                        </li>
+
+                        <li>
+                            인터넷프로토콜
+                        </li>
+
+                        <li>
+                            전산개론
+                        </li>
+
+                        <li>
+                            암호학
+                        </li>
+                    </ul>
+                </div>
             </div>
         </Root>
     )
