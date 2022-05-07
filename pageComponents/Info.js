@@ -13,8 +13,11 @@ import {LeftColor, RightColor} from "./elements/Color";
 import {Decryption, Header1, Header2, Header3} from "./elements/Header";
 import {Tag} from "./elements/Tag";
 import {UnorderedList} from "./elements/UnorderedList";
+import {OpacityZeroToOne, OpacityZeroToOneTime} from "./elements/Animation";
 
 const Root = styled.div`
+    animation: ${OpacityZeroToOne} ${OpacityZeroToOneTime};
+    
     svg {
         vertical-align: bottom;
     }
@@ -79,7 +82,7 @@ const Info =
                 </li>
 
                 <li>
-                    주요업무 : 보안 솔루션 유지보수 및 개발
+                    주요업무 : 보안 솔루션 개발 및 유지보수
                 </li>
             </UnorderedList>
 

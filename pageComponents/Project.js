@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import {Decryption, Header1, Header2} from "./elements/Header";
 import {GoProject} from "react-icons/Go";
 import {UnorderedList} from "./elements/UnorderedList";
@@ -7,8 +7,11 @@ import {Tag} from "./elements/Tag";
 import {BsFillPersonFill} from "react-icons/Bs";
 import {FaRegBuilding} from "react-icons/Fa";
 import {RiTeamFill} from "react-icons/Ri";
+import {OpacityZeroToOne, OpacityZeroToOneTime} from "./elements/Animation";
 
 const Root = styled.div`
+    animation: ${OpacityZeroToOne} ${OpacityZeroToOneTime};
+    
     svg {
         vertical-align: bottom;
     }
@@ -24,6 +27,7 @@ const Root = styled.div`
         margin-bottom: 3vh;
     }
 `;
+
 
 
 const Project =

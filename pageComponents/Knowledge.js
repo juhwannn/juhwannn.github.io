@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import React from "react";
+import {OpacityZeroToOne, OpacityZeroToOneTime} from "./elements/Animation";
 
 const Root = styled.div`
-
+    animation: ${OpacityZeroToOne} ${OpacityZeroToOneTime};
+    
 `;
 
 const Knowledge =
