@@ -9,8 +9,6 @@ const Root = styled.div`
     border: #0070f3 none;
     border-radius: 3px;
     
-    box-shadow: 2px 2px 2px 2px ${v => (v.shadowColor)};
-    
     margin-right: 0.5vw;
     padding: 1px 3px 1px 3px;
     
