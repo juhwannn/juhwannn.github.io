@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {RightColor} from "./Color";
 
 export const Header1 = styled.h1`
     font-size: 2rem;
@@ -16,4 +17,10 @@ export const Header2 = styled.h2`
 export const Header3 = styled.h3`
     font-size: 1.17rem;
     text-transform: uppercase;
+`;
+
+export const Decryption = styled.span`
+    font-size: 18px;
+    color: ${RightColor};
+    font-weight: lighter;
 `;
