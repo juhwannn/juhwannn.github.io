@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
 import styled, {keyframes} from "styled-components";
-import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/ai";
-import { RiKakaoTalkFill } from "react-icons/ri";
+import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/Ai";
+import { RiKakaoTalkFill } from "react-icons/Ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import Info from "../pageComponents/Info";
 import Project from "../pageComponents/Project";
@@ -209,9 +209,9 @@ const Root = styled.div`
     .right {
         width: ${props => props.clickButton ? "50vw" : "0vw"};
         height: 100vh;
+        overflow: auto;
         
         float: right;
-        
         color: ${LeftColor};
         background: ${RightColor};
         
@@ -257,6 +257,8 @@ const Root = styled.div`
             text-align: center;
             
             display: table;
+            
+            overflow: auto;
             
             &:after {
                 display: block;
@@ -396,7 +398,7 @@ export default function Home() {
 
 
                         }}>
-                            MENU4
+                            MEMOIR
                         </button><br/>
 
                         <div className="socialMediaIcon">
