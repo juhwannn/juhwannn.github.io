@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import {BiRocket} from "react-icons/Bi";
 import {SiNextdotjs, SiExpress, SiTheconversation, SiJavascript, SiJenkins, SiMariadb, SiMysql, SiSequelize, SiSubversion,} from "react-icons/Si";
 import {SiReact} from "react-icons/Si";
 import {DiCss3, DiUbuntu} from "react-icons/Di";
@@ -8,10 +7,11 @@ import {AiFillGithub} from "react-icons/Ai";
 import {FaAws, FaDocker, FaNode, FaWindows} from "react-icons/Fa";
 import {TiHtml5} from "react-icons/Ti";
 import {GrCentos, GrOracle} from "react-icons/Gr";
-import {Tag} from "./elements/Tag";
 import {BsKeyboard} from "react-icons/Bs";
 import {MdSchool} from "react-icons/Md";
 import {LeftColor, RightColor} from "./elements/Color";
+import {Header1, Header2, Header3} from "./elements/Header";
+import {Tag} from "./elements/Tag";
 
 const Root = styled.div`
     svg {
@@ -78,19 +78,6 @@ const Root = styled.div`
     }
 `;
 
-const Header1 = styled.h1`
-    font-size: 2rem;
-`;
-
-const Header2 = styled.h2`
-    color: #070707;
-    
-    font-size: 1.5rem;
-`;
-
-const Header3 = styled.h3`
-    font-size: 1.17rem;
-`;
 
 const Info =
 ({
