@@ -13,10 +13,10 @@ import {LeftColor, RightColor} from "./elements/Color";
 import {Decryption, Header1, Header2, Header3} from "./elements/Header";
 import {Tag} from "./elements/Tag";
 import {UnorderedList} from "./elements/UnorderedList";
-import {OpacityZeroToOne, OpacityZeroToOneTime} from "./elements/Animation";
+import {OpacityOneToZero, OpacityZeroToOne, OpacityTime} from "./elements/Animation";
 
 const Root = styled.div`
-    animation: ${OpacityZeroToOne} ${OpacityZeroToOneTime};
+    animation: ${OpacityZeroToOne} ${OpacityTime};
     
     svg {
         vertical-align: bottom;
@@ -42,7 +42,7 @@ const Info =
 }) => {
 
     return (
-        <Root style={{display: visible ? "block" : "none"}}>
+        <Root style={{display: visible ? "block" : "none"}} visible={visible}>
             <Header1>
                 <SiTheconversation/>
                 TMI

@@ -7,10 +7,10 @@ import {Tag} from "./elements/Tag";
 import {BsFillPersonFill} from "react-icons/Bs";
 import {FaRegBuilding} from "react-icons/Fa";
 import {RiTeamFill} from "react-icons/Ri";
-import {OpacityZeroToOne, OpacityZeroToOneTime} from "./elements/Animation";
+import {OpacityZeroToOne, OpacityTime} from "./elements/Animation";
 
 const Root = styled.div`
-    animation: ${OpacityZeroToOne} ${OpacityZeroToOneTime};
+    animation: ${OpacityZeroToOne} ${OpacityTime};
     
     svg {
         vertical-align: bottom;
