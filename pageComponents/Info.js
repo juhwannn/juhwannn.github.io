@@ -10,13 +10,13 @@ import {GrCentos, GrOracle} from "react-icons/Gr";
 import {BsKeyboard} from "react-icons/Bs";
 import {MdSchool} from "react-icons/Md";
 import {LeftColor, RightColor} from "./elements/Color";
-import {Decryption, Header1, Header2, Header3} from "./elements/Header";
+import {Description, Header1, Header2, Header3} from "./elements/Header";
 import {Tag} from "./elements/Tag";
 import {UnorderedList} from "./elements/UnorderedList";
-import {FadeOut, FadeIn, OpacityTime} from "./elements/Animation";
+import {FadeOut, FadeIn, FadeTime} from "./elements/Animation";
 
 const Root = styled.div`
-    animation: ${FadeIn} ${OpacityTime};
+    animation: ${FadeIn} ${FadeTime};
     
     svg {
         vertical-align: bottom;
@@ -69,7 +69,7 @@ const Info =
 
             <UnorderedList>
                 <Header2>
-                    코드와이즈 <Decryption>2020.05 ~</Decryption>
+                    코드와이즈 <Description>2020.05 ~</Description>
                 </Header2>
 
                 <hr/>
@@ -89,7 +89,7 @@ const Info =
 
             <UnorderedList>
                 <Header2>
-                    호서전문학교 <Decryption>2017.03 ~ 2020.03</Decryption>
+                    호서전문학교 <Description>2017.03 ~ 2020.03</Description>
                 </Header2>
 
                 <hr/>

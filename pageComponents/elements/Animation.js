@@ -1,6 +1,6 @@
 import {keyframes} from "styled-components";
 
-export const OpacityZeroToOne = keyframes`
+export const FadeIn = keyframes`
     from {
         opacity: 0;
     }
@@ -10,4 +10,14 @@ export const OpacityZeroToOne = keyframes`
     }
 `;
 
-export const OpacityZeroToOneTime = "2s";
+export const FadeOut = keyframes`
+    from {
+        opacity: 1;
+    }
+    
+    to {
+        opacity: 0;
+    }
+`;
+
+export const FadeTime = "1500ms";
