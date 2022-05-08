@@ -1,16 +1,16 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
-import {Decryption, Header1, Header2} from "./elements/Header";
+import {Description, Header1, Header2} from "./elements/Header";
 import {GoProject} from "react-icons/Go";
 import {UnorderedList} from "./elements/UnorderedList";
 import {Tag} from "./elements/Tag";
 import {BsFillPersonFill} from "react-icons/Bs";
 import {FaRegBuilding} from "react-icons/Fa";
 import {RiTeamFill} from "react-icons/Ri";
-import {FadeIn, OpacityTime} from "./elements/Animation";
+import {FadeIn, FadeTime} from "./elements/Animation";
 
 const Root = styled.div`
-    animation: ${FadeIn} ${OpacityTime};
+    animation: ${FadeIn} ${FadeTime};
     
     svg {
         vertical-align: bottom;
@@ -54,9 +54,9 @@ const Project =
 
                 <br/>
                 <br/>
-                <Decryption>
+                <Description>
                     깃헙 블로그입니다.
-                </Decryption>
+                </Description>
             </UnorderedList>
 
             <UnorderedList>
@@ -70,9 +70,9 @@ const Project =
 
                 <br/>
                 <br/>
-                <Decryption>
+                <Description>
                     upbittrading
-                </Decryption>
+                </Description>
             </UnorderedList>
 
             <UnorderedList>
@@ -86,10 +86,17 @@ const Project =
 
                 <br/>
                 <br/>
-                <Decryption>
+                <Description>
                     automatic-lotto
-                </Decryption>
+                </Description>
             </UnorderedList>
+
+            <hr/>
+
+            <Header1>
+                <RiTeamFill/>
+                team
+            </Header1>
 
             <UnorderedList>
                 <Header2>
@@ -102,17 +109,10 @@ const Project =
 
                 <br/>
                 <br/>
-                <Decryption>
+                <Description>
                     mychatbot
-                </Decryption>
+                </Description>
             </UnorderedList>
-
-            <hr/>
-
-            <Header1>
-                <RiTeamFill/>
-                team
-            </Header1>
 
             <UnorderedList>
                 <Header2>
@@ -125,9 +125,9 @@ const Project =
 
                 <br/>
                 <br/>
-                <Decryption>
+                <Description>
                     twitch_miner
-                </Decryption>
+                </Description>
             </UnorderedList>
 
             <hr/>
@@ -152,9 +152,9 @@ const Project =
                 <br/>
                 <br/>
 
-                <Decryption>
+                <Description>
                     주류 배달 서비스 관리자페이지 개발에 직접 참여하였습니다. React를 사용한 프론트엔드 구축을, Node.js 를 사용한 백엔드 api 개발을 맡았습니다.
-                </Decryption>
+                </Description>
             </UnorderedList>
 
             <UnorderedList>
@@ -171,9 +171,9 @@ const Project =
                 <br/>
                 <br/>
 
-                <Decryption>
+                <Description>
                     외부 api 를 사용해 가상머신과 Restful api 통신으로 클라우드 서비스를 제공하는 next.js를 사용한 프론트엔드 구축을, express를 사용한 백엔드 api 개발을 맡았습니다.
-                </Decryption>
+                </Description>
             </UnorderedList>
 
             <UnorderedList>
@@ -188,9 +188,9 @@ const Project =
                 <br/>
                 <br/>
 
-                <Decryption>
+                <Description>
                     자사 서비스인 보안솔루션은 splunk, elastic 과 연동하여 짜놓은 시나리오에 탐지된 티켓들을 모니터링하는 서비스입니다.
-                </Decryption>
+                </Description>
             </UnorderedList>
         </Root>
     );

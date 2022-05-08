@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
-import styled, {keyframes} from "styled-components";
+import styled, {keyframes, css} from "styled-components";
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/Ai";
 import { RiKakaoTalkFill } from "react-icons/Ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import Info from "../pageComponents/Info";
 import Project from "../pageComponents/Project";
 import Knowledge from "../pageComponents/Knowledge";
+import {FadeIn, FadeOut, FadeTime} from "../pageComponents/elements/Animation";
+import Memoir from "../pageComponents/Memoir";
 
 const transitionSec = "1000ms";
 
@@ -25,7 +27,7 @@ const Root = styled.div`
         transition-duration: ${transitionSec};
         
         .leftHeader {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "100vw"};
             height: 5vh;
             
             float: left;
@@ -179,6 +181,8 @@ const Root = styled.div`
                 button:active {
                     outline: none;
                     box-shadow: none;
+                    background: rgba(0,86,102);
+                    color: ${LeftColor};
                 }
                 button:hover {
                     box-shadow: 0 80px 0 0 rgba(0,86,102,0.5) inset, 0 -80px 0 0 rgba(0,86,102,0.5) inset;
@@ -218,8 +222,9 @@ const Root = styled.div`
         transition-property: width, color;
         transition-duration: ${transitionSec}, ${transitionSec};
         
+        
         .rightHeader {
-            width: 50vw;
+            width: ${props => props.clickButton ? "50vw" : "0vw"};
             height: 5vh;
             
             color: ${props => props.clickButton ? `${LeftColor}` : `${RightColor}`};
@@ -234,11 +239,6 @@ const Root = styled.div`
             padding-top: 30px;
             
             overflow-y: hidden;
-
-            .menuName {
-                animation-name: ${grow};
-                animation-duration: 1s;            
-            }
         }
         .rightHeader::after {
             display: block;
@@ -304,22 +304,16 @@ const ButtonClickHandle =
     setMenuName
 ) => {
 
-    if (clickButton && !visible) {
-        setTimeout(() => {
-            setMenuName("홈");
-            setClickButton(!visible);
-            setVisible(!visible);
-        }, parseInt(transitionSec));
+    if (clickButton && visible) {
+        setClickButton(false);
     }
 
-    if (!clickButton && visible) {
-        setTimeout(() => {
-            setMenuName(menuName);
-            setClickButton(!visible);
-        }, parseInt(transitionSec));
+    if (!clickButton) {
+        setClickButton(true);
     }
 
-    return;
+    setVisible(true);
+    setMenuName(menuName);
 }
 
 export default function Home() {
@@ -328,6 +322,7 @@ export default function Home() {
     const [infoVisible, setInfoVisible] = useState(false);
     const [projectVisible, setProjectVisible] = useState(false);
     const [knowledgeVisible, setKnowledgeVisible] = useState(false);
+    const [memoirVisible, setMemoirVisible] = useState(false);
 
     const [clickButton, setClickButton] = useState(false);
 
@@ -354,11 +349,9 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            setClickButton(!clickButton);
-
-                            setInfoVisible(true);
                             setProjectVisible(false);
                             setKnowledgeVisible(false);
+                            setMemoirVisible(false);
 
                             ButtonClickHandle(clickButton, setClickButton, infoVisible, setInfoVisible, "INFO", setMenuName);
                         }}>
@@ -368,11 +361,9 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            setClickButton(!clickButton);
-
                             setInfoVisible(false);
-                            setProjectVisible(true);
                             setKnowledgeVisible(false);
+                            setMemoirVisible(false);
 
                             ButtonClickHandle(clickButton, setClickButton, projectVisible, setProjectVisible, "PROJECT", setMenuName);
                         }}>
@@ -382,11 +373,9 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            setClickButton(!clickButton);
-
                             setInfoVisible(false);
                             setProjectVisible(false);
-                            setKnowledgeVisible(true);
+                            setMemoirVisible(false);
 
                             ButtonClickHandle(clickButton, setClickButton, knowledgeVisible, setKnowledgeVisible, "KNOWLEDGE", setMenuName);
                         }}>
@@ -396,7 +385,11 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
+                            setInfoVisible(false);
+                            setProjectVisible(false);
+                            setKnowledgeVisible(false);
 
+                            ButtonClickHandle(clickButton, setClickButton, memoirVisible, setMemoirVisible, "MEMOIR", setMenuName);
                         }}>
                             MEMOIR
                         </button><br/>
@@ -478,6 +471,7 @@ export default function Home() {
                         <Info visible={infoVisible} setVisible={setInfoVisible}/>
                         <Project visible={projectVisible} setVisible={setProjectVisible}/>
                         <Knowledge visible={knowledgeVisible} setVisible={setKnowledgeVisible}/>
+                        <Memoir visible={memoirVisible} setVisible={setMemoirVisible}/>
                     </div>
                 </div>
 
