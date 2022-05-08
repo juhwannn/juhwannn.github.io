@@ -19,7 +19,7 @@ export const Header3 = styled.h3`
     text-transform: uppercase;
 `;
 
-export const Decryption = styled.span`
+export const Description = styled.span`
     font-size: 18px;
     color: ${RightColor};
 `;
