@@ -59,59 +59,6 @@ const Knowledge =
             {/*    <GrServerCluster/>*/}
             {/*    Server*/}
             {/*</Header1>*/}
-
-
-            {/*# 웹서버와 서블릿 컨테이너 동작 원리*/}
-
-            {/*# 자바 빈*/}
-
-            {/*# 미들웨어*/}
-
-            {/*# 결합의존도*/}
-
-            {/*# 서비스의존도*/}
-
-            {/*# message queue*/}
-
-            {/*# quartz*/}
-
-            {/*# internal api*/}
-
-            {/*# yaml*/}
-
-            {/*# typescript*/}
-
-            {/*# 라이브러리와 API 차이*/}
-
-            {/*# 디자인 패턴*/}
-
-            {/*# 맥북에 jenkins 설치*/}
-
-            {/*# express.js middleware 수행 규칙*/}
-
-            {/*# express.js가 Next.js 로 요청을 위임하는 방법*/}
-
-            {/*# SPA, SSR, CSR*/}
-
-            {/*# 커밋 컨벤션*/}
-
-            {/*# SAGA*/}
-
-            {/*# SEO 최적화 ?*/}
-
-            {/*# **document is not defined 에러 (ReactQuill 있는 페이지에서 리로딩시 에러)***/}
-
-            {/*# DDD*/}
-
-            {/*# Clean **Architecture***/}
-
-            {/*# Event Driven MicroService *****/}
-
-            {/*# LAMDA*/}
-
-            {/*# React*/}
-
-            {/*# [vercel.app](http://vercel.app) (블로그 ?)*/}
         </Root>
     );
 }
