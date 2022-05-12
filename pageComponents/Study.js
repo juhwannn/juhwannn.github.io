@@ -6,6 +6,7 @@ const Root = styled.div`
 
 `;
 
+
 const Study =
 ({
 
