@@ -379,7 +379,7 @@ export default function Home() {
 
                             ButtonClickHandle(clickButton, setClickButton, knowledgeVisible, setKnowledgeVisible, "KNOWLEDGE", setMenuName);
                         }}>
-                            KNOWLEDGE
+                            VELOG
                         </button><br/>
 
                         <button onClick={e => {
