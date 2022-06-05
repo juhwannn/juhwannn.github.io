@@ -377,7 +377,7 @@ export default function Home() {
                             setProjectVisible(false);
                             setMemoirVisible(false);
 
-                            ButtonClickHandle(clickButton, setClickButton, knowledgeVisible, setKnowledgeVisible, "KNOWLEDGE", setMenuName);
+                            ButtonClickHandle(clickButton, setClickButton, knowledgeVisible, setKnowledgeVisible, "VELOG", setMenuName);
                         }}>
                             VELOG
                         </button><br/>
