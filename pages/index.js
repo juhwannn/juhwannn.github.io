@@ -12,12 +12,9 @@ import Memoir from "../pageComponents/Memoir";
 
 const transitionSec = "1000ms";
 
-const grow = keyframes`
-    from { transform: translateY(3em) }
-    to { transform: translateY(0) }
-`
-
 const Root = styled.div`
+    animation: ${FadeOut} ${FadeTime};
+    
     .left {
         width: ${props => props.clickButton ? "50vw" : "100vw"};
         height: 100vh;
