@@ -382,17 +382,17 @@ export default function Home() {
                             VELOG
                         </button><br/>
 
-                        <button onClick={e => {
-                            e.preventDefault();
+                        {/*<button onClick={e => {*/}
+                        {/*    e.preventDefault();*/}
 
-                            setInfoVisible(false);
-                            setProjectVisible(false);
-                            setKnowledgeVisible(false);
+                        {/*    setInfoVisible(false);*/}
+                        {/*    setProjectVisible(false);*/}
+                        {/*    setKnowledgeVisible(false);*/}
 
-                            ButtonClickHandle(clickButton, setClickButton, memoirVisible, setMemoirVisible, "MEMOIR", setMenuName);
-                        }}>
-                            MEMOIR
-                        </button><br/>
+                        {/*    ButtonClickHandle(clickButton, setClickButton, memoirVisible, setMemoirVisible, "MEMOIR", setMenuName);*/}
+                        {/*}}>*/}
+                        {/*    MEMOIR*/}
+                        {/*</button><br/>*/}
 
                         <div className="socialMediaIcon">
                             <span className="aiFillGithub" onClick={e => {
