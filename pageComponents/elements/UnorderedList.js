@@ -17,10 +17,17 @@ const Root = styled.ul`
     width: 100%;
     height: auto;
     
+    cursor: pointer;
+    
     li {
         list-style-type: square;
         
         margin-top: 1vh;
+    }
+    
+    &:hover {
+        transition: box-shadow 0.3s;
+        box-shadow: 8px 8px 8px 8px rgba(12, 12, 12, 0.2); 
     }
 `;
 
