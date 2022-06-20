@@ -43,7 +43,9 @@ const Project =
                 personal
             </Header1>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                alert("asdf")
+            }}>
                 <Header2>
                     🚀 Github.io
                 </Header2>

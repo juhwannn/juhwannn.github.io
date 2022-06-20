@@ -26,11 +26,12 @@ const Root = styled.ul`
 
 export const UnorderedList =
 ({
-    children
+    children,
+    onClick
 }) => {
 
     return (
-        <Root>
+        <Root onClick={onClick}>
             {children}
         </Root>
     );
