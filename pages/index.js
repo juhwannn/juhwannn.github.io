@@ -13,7 +13,7 @@ import Memoir from "../pageComponents/Memoir";
 const transitionSec = "1000ms";
 
 const Root = styled.div`
-    animation: ${FadeOut} ${FadeTime};
+    animation: ${FadeIn} ${FadeTime};
     
     .left {
         width: ${props => props.clickButton ? "50vw" : "100vw"};
@@ -370,11 +370,7 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            setInfoVisible(false);
-                            setProjectVisible(false);
-                            setMemoirVisible(false);
-
-                            ButtonClickHandle(clickButton, setClickButton, knowledgeVisible, setKnowledgeVisible, "VELOG", setMenuName);
+                            alert('h');
                         }}>
                             VELOG
                         </button><br/>
