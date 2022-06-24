@@ -21,3 +21,5 @@ export const FadeOut = keyframes`
 `;
 
 export const FadeTime = "1500ms";
+
+export const PopupFadeTime = "700ms";
