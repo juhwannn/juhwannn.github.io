@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
-import styled, {keyframes, css} from "styled-components";
+import styled from "styled-components";
 import { AiFillGithub, AiOutlineMail, AiFillPhone } from "react-icons/Ai";
 import { RiKakaoTalkFill } from "react-icons/Ri";
 import { LeftColor, RightColor } from "/pageComponents/elements/Color";
 import Info from "../pageComponents/Info";
 import Project from "../pageComponents/Project";
 import Knowledge from "../pageComponents/Knowledge";
-import {FadeIn, FadeOut, FadeTime} from "../pageComponents/elements/Animation";
+import {FadeIn, FadeTime} from "../pageComponents/elements/Animation";
 import Memoir from "../pageComponents/Memoir";
 
 const transitionSec = "1000ms";

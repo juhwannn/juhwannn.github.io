@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import styled, {keyframes} from "styled-components";
 import {Description, Header1, Header2} from "./elements/Header";
-import {GoProject} from "react-icons/Go";
 import {UnorderedList} from "./elements/UnorderedList";
 import {Tag} from "./elements/Tag";
 import {BsFillPersonFill} from "react-icons/Bs";
 import {FaRegBuilding} from "react-icons/Fa";
 import {RiTeamFill} from "react-icons/Ri";
 import {FadeIn, FadeTime} from "./elements/Animation";
+import {GithubIoModal} from "./modals/GithubIoModal";
+import {UpbitTradingModal} from "./modals/UpbitTradingModal";
+import {MyChatBotModal} from "./modals/MyChatBotModal";
+import {DringdringModal} from "./modals/DringdringModal";
+import {CloudMCityModal} from "./modals/CloudMCityModal";
+import {SecuritySolutionModal} from "./modals/SecuritySolutionModal";
 
 const Root = styled.div`
     animation: ${FadeIn} ${FadeTime};
@@ -35,6 +40,13 @@ const Project =
     visible,
     setVisible
 }) => {
+    const [githubIoPopup, setGithubIoPopup] = useState(false);
+    const [upbitTradingPopup, setUpbitTradingPopup] = useState(false);
+    const [automaticLottoPopup, setAutomaticLottoPopup] = useState(false);
+    const [myChatBotPopup, setMyChatbotPopup] = useState(false);
+    const [dringdringPopup, setDringDringPopup] = useState(false);
+    const [cloudMCityPopup, setCloudMCityPopup] = useState(false);
+    const [securitySolutionPopup, setSecuritySolutionPopup] = useState(false);
 
     return (
         <Root style={{display: visible ? "block" : "none"}}>
@@ -44,7 +56,7 @@ const Project =
             </Header1>
 
             <UnorderedList onClick={e => {
-                alert("asdf")
+                setGithubIoPopup(true);
             }}>
                 <Header2>
                     🚀 Github.io
@@ -61,7 +73,9 @@ const Project =
                 </Description>
             </UnorderedList>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                setUpbitTradingPopup(true);
+            }}>
                 <Header2>
                     🧨 upbittrading
                 </Header2>
@@ -77,7 +91,9 @@ const Project =
                 </Description>
             </UnorderedList>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                setAutomaticLottoPopup(true);
+            }}>
                 <Header2>
                     🗼 automatic-lotto
                 </Header2>
@@ -100,7 +116,9 @@ const Project =
                 team
             </Header1>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                setMyChatbotPopup(true);
+            }}>
                 <Header2>
                     🚃 mychatbot
                 </Header2>
@@ -139,7 +157,9 @@ const Project =
                 company
             </Header1>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                setDringDringPopup(true);
+            }}>
                 <Header2>
                     🚛 dringdring
                 </Header2>
@@ -159,7 +179,9 @@ const Project =
                 </Description>
             </UnorderedList>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                setCloudMCityPopup(true);
+            }}>
                 <Header2>
                     📝 CloudMCity
                 </Header2>
@@ -178,7 +200,9 @@ const Project =
                 </Description>
             </UnorderedList>
 
-            <UnorderedList>
+            <UnorderedList onClick={e => {
+                setSecuritySolutionPopup(true);
+            }}>
                 <Header2>
                     🥝 보안솔루션
                 </Header2>
@@ -194,6 +218,13 @@ const Project =
                     자사 서비스인 보안솔루션은 splunk, elastic 과 연동하여 짜놓은 시나리오에 탐지된 티켓들을 모니터링하는 서비스입니다.
                 </Description>
             </UnorderedList>
+
+            <GithubIoModal visible={githubIoPopup} setVisible={setGithubIoPopup}/>
+            <UpbitTradingModal visible={upbitTradingPopup} setVisible={setUpbitTradingPopup}/>
+            <MyChatBotModal visible={myChatBotPopup} setVisible={setMyChatbotPopup}/>
+            <DringdringModal visible={dringdringPopup} setVisible={setDringDringPopup}/>
+            <CloudMCityModal visible={cloudMCityPopup} setVisible={setCloudMCityPopup}/>
+            <SecuritySolutionModal visible={securitySolutionPopup} setVisible={setSecuritySolutionPopup}/>
         </Root>
     );
 };

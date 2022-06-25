@@ -3,11 +3,10 @@ import React from "react";
 import {FadeIn, FadeTime} from "./elements/Animation";
 import {Description, Header1, Header2, Header3} from "./elements/Header";
 import {GiTalk} from "react-icons/Gi";
-import {BsFillPersonFill} from "react-icons/bs";
-import {RiTeamFill} from "react-icons/ri";
-import {FaRegBuilding} from "react-icons/fa";
+import {BsFillPersonFill} from "react-icons/Bs";
+import {RiTeamFill} from "react-icons/Ri";
+import {FaRegBuilding} from "react-icons/Fa";
 import {UnorderedList} from "./elements/UnorderedList";
-import {DefaultContext} from "react-icons";
 
 const Root = styled.div`
     animation: ${FadeIn} ${FadeTime};
