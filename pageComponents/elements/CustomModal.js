@@ -22,7 +22,7 @@ const Root = styled.div`
         top: 50%;
         left: 50%;
         margin-left: -25vw;
-        margin-top: -15vh;
+        margin-top: -30vh;
         
         >.title {
             width: 45vw;
@@ -38,7 +38,7 @@ const Root = styled.div`
         
         >.content {
             width: 45vw;
-            max-height: 500px;
+            max-height: 55vh;
             background-color: #fff;
             padding: 30px 40px;
             overflow-y: auto;        
