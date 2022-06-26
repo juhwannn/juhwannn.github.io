@@ -13,6 +13,7 @@ import {MyChatBotModal} from "./modals/MyChatBotModal";
 import {DringdringModal} from "./modals/DringdringModal";
 import {CloudMCityModal} from "./modals/CloudMCityModal";
 import {SecuritySolutionModal} from "./modals/SecuritySolutionModal";
+import {AutomaticlottoModal} from "./modals/AutomaticlottoModal";
 
 const Root = styled.div`
     animation: ${FadeIn} ${FadeTime};
@@ -69,7 +70,7 @@ const Project =
                 <br/>
                 <br/>
                 <Description>
-                    깃헙 블로그입니다.
+                    깃허브 블로그 입니다.
                 </Description>
             </UnorderedList>
 
@@ -87,7 +88,7 @@ const Project =
                 <br/>
                 <br/>
                 <Description>
-                    upbittrading
+                    코인 자동 매수 매도 싸이트입니다.
                 </Description>
             </UnorderedList>
 
@@ -105,7 +106,7 @@ const Project =
                 <br/>
                 <br/>
                 <Description>
-                    automatic-lotto
+                    복권 자동구매 싸이트입니다.
                 </Description>
             </UnorderedList>
 
@@ -221,6 +222,7 @@ const Project =
 
             <GithubIoModal visible={githubIoPopup} setVisible={setGithubIoPopup}/>
             <UpbitTradingModal visible={upbitTradingPopup} setVisible={setUpbitTradingPopup}/>
+            <AutomaticlottoModal visible={automaticLottoPopup} setVisible={setAutomaticLottoPopup}/>
             <MyChatBotModal visible={myChatBotPopup} setVisible={setMyChatbotPopup}/>
             <DringdringModal visible={dringdringPopup} setVisible={setDringDringPopup}/>
             <CloudMCityModal visible={cloudMCityPopup} setVisible={setCloudMCityPopup}/>
