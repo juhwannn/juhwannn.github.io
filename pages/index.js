@@ -370,7 +370,7 @@ export default function Home() {
                         <button onClick={e => {
                             e.preventDefault();
 
-                            alert('h');
+                            alert('벨로그 준비중.');
                         }}>
                             VELOG
                         </button><br/>
