@@ -14,6 +14,7 @@ import {DringdringModal} from "./modals/DringdringModal";
 import {CloudMCityModal} from "./modals/CloudMCityModal";
 import {SecuritySolutionModal} from "./modals/SecuritySolutionModal";
 import {AutomaticlottoModal} from "./modals/AutomaticlottoModal";
+import {WebMusicModal} from "./modals/WebMusicModal";
 
 const Root = styled.div`
     animation: ${FadeIn} ${FadeTime};
@@ -44,6 +45,7 @@ const Project =
     const [githubIoPopup, setGithubIoPopup] = useState(false);
     const [upbitTradingPopup, setUpbitTradingPopup] = useState(false);
     const [automaticLottoPopup, setAutomaticLottoPopup] = useState(false);
+    const [webMusicPopup, setWebMusicPopup] = useState(false);
     const [myChatBotPopup, setMyChatbotPopup] = useState(false);
     const [dringdringPopup, setDringDringPopup] = useState(false);
     const [cloudMCityPopup, setCloudMCityPopup] = useState(false);
@@ -107,6 +109,25 @@ const Project =
                 <br/>
                 <Description>
                     복권 자동구매 싸이트입니다.
+                </Description>
+            </UnorderedList>
+
+            <UnorderedList onClick={e => {
+                setWebMusicPopup(true);
+            }}>
+                <Header2>
+                    🎵 WebMusic
+                </Header2>
+
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Next.js</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>gh-pages</Tag>
+                <Tag bgColor={"#EDEDEB"} fontColor={"#DB635E"}>Github Action</Tag>
+
+                <br/>
+                <br/>
+
+                <Description>
+                    웹 페이지에서 작곡 하는 사이트 입니다.
                 </Description>
             </UnorderedList>
 
@@ -223,6 +244,7 @@ const Project =
             <GithubIoModal visible={githubIoPopup} setVisible={setGithubIoPopup}/>
             <UpbitTradingModal visible={upbitTradingPopup} setVisible={setUpbitTradingPopup}/>
             <AutomaticlottoModal visible={automaticLottoPopup} setVisible={setAutomaticLottoPopup}/>
+            <WebMusicModal visible={webMusicPopup} setVisible={setWebMusicPopup}/>
             <MyChatBotModal visible={myChatBotPopup} setVisible={setMyChatbotPopup}/>
             <DringdringModal visible={dringdringPopup} setVisible={setDringDringPopup}/>
             <CloudMCityModal visible={cloudMCityPopup} setVisible={setCloudMCityPopup}/>
