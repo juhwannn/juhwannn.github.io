@@ -367,13 +367,12 @@ export default function Home() {
                             PROJECT
                         </button><br/>
 
-                        <button onClick={e => {
-                            e.preventDefault();
-
-                            alert('벨로그 준비중.');
-                        }}>
-                            VELOG
-                        </button><br/>
+                        <a target="_black" href="https://velog.io/@juhwannn" rel='noreferrer'>
+                            <button>
+                                VELOG
+                            </button>
+                        </a>
+                        <br/>
 
                         {/*<button onClick={e => {*/}
                         {/*    e.preventDefault();*/}
