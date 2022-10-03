@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {SiNextdotjs, SiExpress, SiTheconversation, SiJavascript, SiJenkins, SiMariadb, SiMysql, SiSequelize, SiSubversion,} from "react-icons/Si";
+import {SiNextdotjs, SiExpress, SiTheconversation, SiJavascript, SiJenkins, SiMariadb, SiMysql, SiSequelize, SiSubversion, SiJava, SiSpring} from "react-icons/Si";
 import {SiReact} from "react-icons/Si";
 import {DiCss3, DiUbuntu} from "react-icons/Di";
 import {AiFillGithub} from "react-icons/Ai";
@@ -55,9 +55,6 @@ const Info =
                 강아지보단 고양이를 좋아합니다. <br/>
                 랩퍼 창모를 좋아합니다. <br/>
                 MBTI 는 INFP 입니다. <br/>
-                <br/>
-
-                 개인의 생각을 존중받지 못하는 것을 싫어합니다.
             </Header3>
 
             <hr/>
@@ -168,14 +165,14 @@ const Info =
                 </li>
 
                 <li>
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiExpress color={"black"}/>JAVA
+                    <Tag bgColor={"white"} fontColor={"red"}>
+                        <SiJava color={"red"}/>JAVA
                     </Tag>
                 </li>
 
                 <li>
-                    <Tag bgColor={"white"} fontColor={"black"}>
-                        <SiExpress color={"black"}/>Spring Framework
+                    <Tag bgColor={"white"} fontColor={"green"}>
+                        <SiSpring color={"green"}/>Spring Framework
                     </Tag>
                 </li>
             </UnorderedList>
@@ -281,129 +278,6 @@ const Info =
                     <Tag bgColor={"white"} fontColor={"#438DDA"}>
                         <FaDocker color={"#438DDA"}/>Docker
                     </Tag>
-                </li>
-            </UnorderedList>
-
-        <hr/>
-
-        <Header1>
-            <MdSchool/>
-            Education
-        </Header1>
-
-            <Header3>
-                서울양천고등학교
-            </Header3>
-
-            2014.02 졸업 (이공계열)
-
-            <Header3>
-                서울호서전문학교 사이버해킹보안과
-            </Header3>
-            전공평균 <Tag bgColor={"white"} fontColor={RightColor}>3.0 / 4.5</Tag> <br/>
-
-            전공 이수과목
-            <UnorderedList>
-                <Header2>
-                    2019
-                </Header2>
-
-                <hr/>
-
-                <li>
-                    데이터베이스실습
-                </li>
-
-                <li>
-                    암호프로토콜
-                </li>
-
-                <li>
-                    네트워크프로그래밍
-                </li>
-
-                <li>
-                    알고리즘
-                </li>
-
-                <li>
-                    보안프로그래밍
-                </li>
-            </UnorderedList>
-
-            <UnorderedList>
-                <Header2>
-                    2018
-                </Header2>
-
-                <hr/>
-
-                <li>
-                    어셈블리언어
-                </li>
-
-                <li>
-                    자바프로그래밍
-                </li>
-
-                <li>
-                    사이버포렌식실습
-                </li>
-
-                <li>
-                    웹프로그래밍실습
-                </li>
-
-                <li>
-                    통신망관리및운용
-                </li>
-
-                <li>
-                    해킹및바이러스
-                </li>
-
-                <li>
-                    모바일프로그래밍
-                </li>
-
-                <li>
-                    운영체제보안
-                </li>
-            </UnorderedList>
-
-            <UnorderedList>
-                <Header2>
-                    2017
-                </Header2>
-
-                <hr/>
-
-                <li>
-                    Unix/Linux
-                </li>
-
-                <li>
-                    데이터베이스
-                </li>
-
-                <li>
-                    C언어Ⅰ
-                </li>
-
-                <li>
-                    이산수학
-                </li>
-
-                <li>
-                    인터넷프로토콜
-                </li>
-
-                <li>
-                    전산개론
-                </li>
-
-                <li>
-                    암호학
                 </li>
             </UnorderedList>
         </Root>

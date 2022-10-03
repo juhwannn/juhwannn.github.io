@@ -15,18 +15,6 @@ const Study =
     return (
         <Root>
             <div>
-                <Header1>웹 서버와 서블릿 컨테이너 동작 원리</Header1>
-                <Description>
-
-                </Description>
-            </div>
-
-            <div>
-                <Header1>자바 빈</Header1>
-
-            </div>
-
-            <div>
                 <Header1>미들웨어</Header1>
 
                 <Description>
@@ -46,10 +34,6 @@ const Study =
 
             <div>
                 <Header1>Message queue</Header1>
-            </div>
-
-            <div>
-                <Header1>quartz</Header1>
             </div>
 
             <div>
@@ -150,6 +134,18 @@ const Study =
 
             <div>
                 <Header1>제어 컴포넌트 / 비제어 컴포넌트</Header1>
+            </div>
+
+            <div>
+                <Header1>명령형 / 선언형</Header1>
+            </div>
+
+            <div>
+                <Header1>react useref</Header1>
+            </div>
+
+            <div>
+                <Header1>가상돔</Header1>
             </div>
         </Root>
     )
