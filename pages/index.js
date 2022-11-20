@@ -13,6 +13,7 @@ import Memoir from "../pageComponents/Memoir";
 const transitionSec = "1000ms";
 
 const Root = styled.div`
+    background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
     animation: ${FadeIn} ${FadeTime};
     
     .left {
@@ -367,11 +368,14 @@ export default function Home() {
                             PROJECT
                         </button><br/>
 
-                        <a target="_black" href="https://velog.io/@juhwannn" rel='noreferrer'>
-                            <button>
-                                VELOG
-                            </button>
-                        </a>
+
+                        <button onClick={e => {
+                            e.preventDefault();
+
+                            router.push("/devlog");
+                        }}>
+                            VELOG
+                        </button>
                         <br/>
 
                         {/*<button onClick={e => {*/}
