@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import styled from 'styled-components';
 import Head from "next/head";
 import {RightColor} from "./elements/Color";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import axios from "axios";
 
 const Root = styled.div`
     .devlogHeader {
@@ -16,7 +17,9 @@ const Root = styled.div`
         .devlogLeftHeader {
             float: left;
             font-weight: bold;
+            font-size: 1.5rem;
             color: ${RightColor};
+            
         }
         
         .devlogRightHeader {
@@ -45,14 +48,51 @@ const Root = styled.div`
     
     .devlogBody {
         height: auto;
-        width: 60%;
-        
+        width: 100%;
         background: red;
+        
+        display: flex;
+        
+        .devlogTagList {
+            background: black;
+            flex: 1;
+        }
+        
+        .devlogPost {
+            background: #eaeaea;
+            flex: 4;
+        }
+        
+        .devlogMenuList {
+            background: #0070f3;
+            
+            flex: 1;
+        }
     }
 `;
 
+const getMenuList = (menuList) => {
+
+}
+
 const LayoutDevlog = ({children}) => {
     const router = useRouter();
+
+    const [menuList, setMenuList] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get("/api/file/");
+                setMenuList(response?.data?.result);
+            } catch (e) {
+                console.log(e);
+                return;
+            }
+        })();
+    }, []);
+
+    const MenuList = getMenuList(menuList);
 
     return (
         <Root>
@@ -72,7 +112,17 @@ const LayoutDevlog = ({children}) => {
             </div>
 
             <div className="devlogBody">
-                {children}
+                <div className="devlogTagList">
+                    TagList
+                </div>
+
+                <div className="devlogPost">
+                    {children}
+                </div>
+
+                <div className="devlogMenuList">
+                    {MenuList}
+                </div>
             </div>
         </Root>
     );
