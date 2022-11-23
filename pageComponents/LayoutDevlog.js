@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Head from "next/head";
 import {RightColor} from "./elements/Color";
 import {useRouter} from "next/router";
-import Link from "next/link";
 import axios from "axios";
+import MenuTree from "./MenuTree";
 
 const Root = styled.div`
     .devlogHeader {
@@ -52,7 +52,6 @@ const Root = styled.div`
         background: red;
         
         display: flex;
-        
         .devlogTagList {
             background: black;
             flex: 1;
@@ -60,6 +59,7 @@ const Root = styled.div`
         
         .devlogPost {
             background: #eaeaea;
+            
             flex: 4;
         }
         
@@ -71,9 +71,6 @@ const Root = styled.div`
     }
 `;
 
-const getMenuList = (menuList) => {
-
-}
 
 const LayoutDevlog = ({children}) => {
     const router = useRouter();
@@ -91,8 +88,6 @@ const LayoutDevlog = ({children}) => {
             }
         })();
     }, []);
-
-    const MenuList = getMenuList(menuList);
 
     return (
         <Root>
@@ -121,7 +116,7 @@ const LayoutDevlog = ({children}) => {
                 </div>
 
                 <div className="devlogMenuList">
-                    {MenuList}
+                    <MenuTree value={menuList}/>
                 </div>
             </div>
         </Root>

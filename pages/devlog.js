@@ -1,16 +1,12 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 const Root = styled.div`
 
 `;
 
-const getMenuList = () => {
-
-};
-
 export default function Home() {
-    const [menu, setMenu] = useState("");
 
     return (
         <Root>
