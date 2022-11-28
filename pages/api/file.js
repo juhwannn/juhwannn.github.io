@@ -9,49 +9,32 @@ const isDirectory = (dir) => {
     return false;
 }
 
-const test = (postsDirectory, folderStructure) => {
+const pushFiles = (dir, file) => {
+    dir["files"] === undefined ?  dir["files"] = [] : null;
+    dir["files"].push(file);
+}
 
-    fs.readdirSync(postsDirectory).map((v,i) => {
-        const test1 = path.join(postsDirectory, v);
+const getDirectoryStructure = (dir, folderStructure, prevFolder = "posts") => {
+    fs.readdirSync(dir).map((v,i) => {
+        const tempDir = path.join(dir, v);
 
-        if (isDirectory(test1)) {
-            folderStructure["posts"][v] = {};
+        folderStructure[prevFolder] === undefined ? folderStructure[prevFolder] = {} : null;
 
-            fs.readdirSync(test1).map((value, index) => {
-                const test2 = path.join(test1, value);
-
-                if (isDirectory(test2)) {
-                    folderStructure["posts"][v][value] = {};
-
-                    fs.readdirSync(test2).map((v2, i2) => {
-                        const test3 = path.join(test2, v2);
-
-                        if (isDirectory(test3)) {
-                            folderStructure["posts"][v][value][v2] = {};
-                        } else {
-                            folderStructure["posts"][v][value][i2] = v2;
-                        }
-                    });
-
-                } else {
-                    folderStructure["posts"][v][index] = value;
-                }
-
-            });
+        if (isDirectory(tempDir)) {
+            folderStructure[prevFolder][v] = {};
+            getDirectoryStructure(tempDir, folderStructure[prevFolder], v);
         } else {
-            folderStructure["posts"][v] = v;
+            pushFiles(folderStructure[prevFolder], v);
         }
 
     });
 }
 
 export default function handler(req, res) {
-    // 초기 디렉토리
     const postsDirectory = path.join(process.cwd(), '/posts');
     const folderStructure = {"posts": {}};
-    test(postsDirectory, folderStructure);
-    console.log(JSON.stringify(folderStructure));
-    console.log(folderStructure);
+
+    getDirectoryStructure(postsDirectory, folderStructure);
 
     res.status(200).json({
         result: folderStructure
