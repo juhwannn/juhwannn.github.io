@@ -69,6 +69,14 @@ const Root = styled.div`
             flex: 1;
         }
     }
+    
+    .devlogFooter {
+        height: 5vh;
+        
+        font-size: 10px;
+        font-weight: lighter;
+        text-align: center;
+    }
 `;
 
 
@@ -118,6 +126,10 @@ const LayoutDevlog = ({children}) => {
                 <div className="devlogMenuList">
                     <MenuTree value={menuList}/>
                 </div>
+            </div>
+
+            <div className="devlogFooter">
+                Copyright 2022. juhwannn all rights reserved.
             </div>
         </Root>
     );
