@@ -7,12 +7,12 @@ const isDirectory = (dir) => {
     }
 
     return false;
-}
+};
 
 const pushFiles = (dir, file) => {
     dir["files"] === undefined ?  dir["files"] = [] : null;
     dir["files"].push(file);
-}
+};
 
 const getDirectoryStructure = (dir, folderStructure, prevFolder = "posts") => {
     fs.readdirSync(dir).map((v,i) => {
