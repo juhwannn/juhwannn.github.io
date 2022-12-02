@@ -19,7 +19,6 @@ const Root = styled.div`
             font-weight: bold;
             font-size: 1.5rem;
             color: ${RightColor};
-            
         }
         
         .devlogRightHeader {
@@ -49,7 +48,6 @@ const Root = styled.div`
     .devlogBody {
         height: auto;
         width: 100%;
-        background: red;
         
         display: flex;
         .devlogTagList {
@@ -64,8 +62,6 @@ const Root = styled.div`
         }
         
         .devlogMenuList {
-            background: #0070f3;
-            
             flex: 1;
         }
     }
@@ -88,7 +84,7 @@ const LayoutDevlog = ({children}) => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get("/api/file/");
+                const response = await axios.get("/api/dirTree/");
                 setMenuList(response?.data?.result);
             } catch (e) {
                 console.log(e);
