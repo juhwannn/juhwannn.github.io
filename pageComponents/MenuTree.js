@@ -65,24 +65,28 @@ const getMenuTree = (value, menuDepth = 0) => {
                     if (v !== "files") {
                         if (Object.keys(value[v]).length >= 1) {
                             return (
-                                <MenuTreeDir menuDepth={menuDepth} key={i} onClick={onClickDir}>
-                                    <div key={i}><FolderIcon style={{width: "23px", height: "23px", marginRight: "5px"}}/>{menuNameConverter(v)}</div>
+                                <MenuTreeDir menuDepth={menuDepth} key={i}>
+                                    <div key={i}>
+                                        <FolderIcon style={{width: "23px", height: "23px", marginRight: "5px"}}/>{menuNameConverter(v)}
+                                    </div>
                                     {getMenuTree(value[v], menuDepth)}
                                 </MenuTreeDir>
                             );
                         }
 
                         return (
-                            <MenuTreeDir key={i} menuDepth={menuDepth} onClick={e => console.log("bb")}>
+                            <MenuTreeDir key={i} menuDepth={menuDepth}>
                                 <FolderIcon style={{width: "23px", height: "23px", marginRight: "5px"}}/>{menuNameConverter(v)}
                                 <div>파일이 없습니다.</div>
                             </MenuTreeDir>
                         );
-
                     } else {
-                        return value[v].map((file, index) => {
-                            return <MenuTreeFiles key={index} menuDepth={menuDepth}><FileIcon style={{width: "23px", height: "23px", marginRight: "5px"}}/>{fileNameConverter(file)}</MenuTreeFiles>
-                        });
+                        return value[v].map((file, index) => (
+                                <MenuTreeFiles key={index} menuDepth={menuDepth}>
+                                    <FileIcon style={{width: "23px", height: "23px", marginRight: "5px"}}/>{fileNameConverter(file)}
+                                </MenuTreeFiles>
+                            )
+                        );
                     }
                 })
             }
