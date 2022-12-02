@@ -33,7 +33,7 @@ const getDirectoryStructure = (dir, folderStructure, prevFolder = "posts") => {
 export default function handler(req, res) {
     const postsDirectory = path.join(process.cwd(), '/posts');
     const folderStructure = {"posts": {}};
-    
+
     getDirectoryStructure(postsDirectory, folderStructure);
 
     res.status(200).json({
