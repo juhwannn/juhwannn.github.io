@@ -14,6 +14,12 @@
                 "preprocess": false
             },
             "inline-react-svg"
-        ]
+        ],
+        ["prismjs", {
+            "languages": ["javascript", "css", "markup", "jsx"],
+            "plugins": ["line-numbers"],
+            "theme": "okaidia",
+            "css": true
+        }]
     ]
 }
