@@ -36,7 +36,7 @@ const markdownToHtml = async (fileContent) => {
     return marked(fileContent);
 };
 
-export default async handler(req, res) {
+export default async function handler(req, res) {
     const fileContent = getContent();
     const test = await markdownToHtml(fileContent);
     res.status(200).json({
