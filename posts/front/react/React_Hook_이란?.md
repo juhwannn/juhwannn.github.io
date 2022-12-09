@@ -60,6 +60,7 @@ function Example() {
         <p>you clicked {count} times</p>
         <button onClick={() => setCount(count+1)}/>
       </div>
+    )
   });
 ```
 
