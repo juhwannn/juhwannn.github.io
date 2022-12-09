@@ -12,6 +12,7 @@ const getContent = () => {
 
 const markdownToHtml = async (fileContent) => {
     const renderer = new marked.Renderer();
+    // TODO: renderer.image 추가
     renderer.code = function(code, language, escaped) {
         code = this.options.highlight(code, language);
         if (!language) {
@@ -38,8 +39,8 @@ const markdownToHtml = async (fileContent) => {
 
 export default async function handler(req, res) {
     const fileContent = getContent();
-    const test = await markdownToHtml(fileContent);
+    const markdownContent = await markdownToHtml(fileContent);
     res.status(200).json({
-        result: test
+        result: markdownContent
     });
 }
