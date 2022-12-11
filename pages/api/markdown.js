@@ -10,8 +10,8 @@ const getContent = (params) => {
     paramKeys.map(v => {
         filePath += "/" + params[v];
     });
-    console.log(filePath);
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+
+    const fileContents = fs.lstatSync(filePath).isDirectory() ? "" : fs.readFileSync(filePath, 'utf8');
 
     return fileContents;
 };
@@ -45,7 +45,7 @@ const markdownToHtml = async (fileContent) => {
 
 export default async function handler(req, res) {
     const params = req.query;
-    console.log("params : " + JSON.stringify(params));
+
     const fileContent = getContent(params);
     const markdownContent = await markdownToHtml(fileContent);
 
