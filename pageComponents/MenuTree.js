@@ -3,6 +3,7 @@ import styled from "styled-components";
 import FolderIcon from "../public/images/icons/folderIcon.svg";
 import FileIcon from "../public/images/icons/fileIcon.svg";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 const Root = styled.div`
     border: 1px solid black;
@@ -37,7 +38,7 @@ const menuList = {
 };
 
 const onClickDir = (menuVisible, setMenuVisible) => {
-    console.log("menuVisible : " + menuVisible);
+
     if (!menuVisible) {
         return;
     }
@@ -55,7 +56,7 @@ const fileNameConverter = (file) => {
 const onClickFile = (router, absFilePath, file, v) => {
     const filePath = "/" + findPath(absFilePath, "files", v) + "/" + file;
 
-    router.push(filePath);
+    return filePath;
 };
 
 const findPath = (ob, key, value) => {
@@ -134,9 +135,17 @@ const getMenuTree = (value, menuDepth = 0, router, absFilePath = value) => {
                         );
                     } else {
                         return value[v].map((file, index) => (
-                                <MenuTreeFiles key={index} menuDepth={menuDepth} onClick={e => onClickFile(router, absFilePath, file, value[v])}>
+                            <Link
+                                passHref
+                                key={index}
+                                href={{
+                                    pathname: onClickFile(router, absFilePath, file, value[v]),
+                                }}
+                            >
+                                <MenuTreeFiles key={index} menuDepth={menuDepth}>
                                     {fileNameConverter(file)}
                                 </MenuTreeFiles>
+                            </Link>
                             )
                         );
                     }

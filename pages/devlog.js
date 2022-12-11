@@ -12,24 +12,11 @@ const Root = styled.div`
 
 
 export default function Home() {
-    const [htmlContent, setHtmlContent] = useState();
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await axios.get("/api/markdown");
-
-                setHtmlContent(response?.data?.result);
-            } catch (e) {
-                console.log(e);
-                return;
-            }
-        })();
-    }, []);
 
     return (
         <Root>
-            <div dangerouslySetInnerHTML={{ __html: htmlContent }}/>
+
         </Root>
     )
 }

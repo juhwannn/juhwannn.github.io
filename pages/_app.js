@@ -1,10 +1,10 @@
 import '../styles/globals.css'
 import LayoutDevlog from "../pageComponents/LayoutDevlog";
 import Layout from "../pageComponents/Layout"
-import React from "react";
+import React, {useEffect} from "react";
 
 const getLayout = (asPath) => {
-    if (asPath === "/devlog") {
+    if (asPath.startsWith("/devlog") || asPath.startsWith("/posts")) {
         return LayoutDevlog;
     }
 

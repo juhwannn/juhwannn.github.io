@@ -3,8 +3,14 @@ import {marked} from "marked";
 import React, {useEffect} from "react";
 import Prism from "prismjs";
 
-const getContent = () => {
-    const filePath = process.cwd() + '/posts/front/react/React_Hook_이란?.md';
+const getContent = (params) => {
+    let filePath = process.cwd() + '/posts';
+    const paramKeys = Object.keys(params);
+
+    paramKeys.map(v => {
+        filePath += "/" + params[v];
+    });
+    console.log(filePath);
     const fileContents = fs.readFileSync(filePath, 'utf8');
 
     return fileContents;
@@ -38,8 +44,11 @@ const markdownToHtml = async (fileContent) => {
 };
 
 export default async function handler(req, res) {
-    const fileContent = getContent();
+    const params = req.query;
+    console.log("params : " + JSON.stringify(params));
+    const fileContent = getContent(params);
     const markdownContent = await markdownToHtml(fileContent);
+
     res.status(200).json({
         result: markdownContent
     });
