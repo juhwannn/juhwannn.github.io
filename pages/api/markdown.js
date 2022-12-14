@@ -13,7 +13,17 @@ const getContent = (params) => {
 
     const fileContents = fs.lstatSync(filePath).isDirectory() ? "" : fs.readFileSync(filePath, 'utf8');
 
-    return fileContents;
+    const fileStats = fs.lstatSync(filePath).isDirectory() ? "" : fs.statSync(filePath);
+
+    const offset = new Date().getTimezoneOffset() * 60000;
+    const createDate = new Date(fileStats.birthtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+    const modifyDate = new Date(fileStats.mtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+
+    return {
+        fileContents,
+        createDate: createDate[0],
+        modifyDate: modifyDate[0]
+    };
 };
 
 const markdownToHtml = async (fileContent) => {
@@ -46,10 +56,14 @@ const markdownToHtml = async (fileContent) => {
 export default async function handler(req, res) {
     const params = req.query;
 
-    const fileContent = getContent(params);
+    const fileContent = getContent(params).fileContents;
+    const createDate = getContent(params).createDate;
+    const modifyDate = getContent(params).modifyDate;
     const markdownContent = await markdownToHtml(fileContent);
 
     res.status(200).json({
-        result: markdownContent
+        markdownContent,
+        createDate,
+        modifyDate
     });
 }
