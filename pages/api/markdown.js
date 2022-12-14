@@ -13,7 +13,10 @@ const getContent = (params) => {
 
     const fileContents = fs.lstatSync(filePath).isDirectory() ? "" : fs.readFileSync(filePath, 'utf8');
 
-    const fileStats = fs.lstatSync(filePath).isDirectory() ? "" : fs.statSync(filePath);
+    if (!fs.statSync(filePath)) {
+        return;
+    }
+    const fileStats = fs.statSync(filePath);
 
     const offset = new Date().getTimezoneOffset() * 60000;
     const createDate = new Date(fileStats.birthtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
