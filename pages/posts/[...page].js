@@ -14,6 +14,7 @@ const Root = styled.div`
 
 const PostsTitle = styled.div`
     font-size: 3rem;
+    font-weight: bold;
 `;
 
 const PostsDate = styled.div`
@@ -22,9 +23,10 @@ const PostsDate = styled.div`
 `;
 
 const HrTag = styled.hr`
-    height: 5px;
+    height: 3px;
     border: 0;
-    box-shadow: 0 10px 10px -10px rgba(0,86,102,0.5) inset;
+    //background: linear-gradient(#fff ,rgba(0,86,102,0.5));
+    background: linear-gradient(to right, rgba(0,86,102,0), rgba(0,86,102,0.7), rgba(0,86,102,0));
 `;
 
 const titleConverter = (page) => {
