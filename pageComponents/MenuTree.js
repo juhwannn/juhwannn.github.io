@@ -6,22 +6,18 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 
 const Root = styled.div`
-    border: 1px solid black;
     font-size: 12px;
-    border-radius: 10px;
-
+    height: 100%;
 `;
 
 const MenuTreeDir = styled.div`
     ${props => props.menuDepth && {paddingLeft: props.menuDepth * 5}};
-    ${props => props.menuDepth > 1 ? {borderLeft: "1px dashed black"} : null};
-    margin-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 `;
 
-const MenuTreeFiles = styled.div`
+const MenuTreeFiles = styled.li`
     ${props => props.menuDepth && {paddingLeft: props.menuDepth * 5}};
-    border-left: 1px dashed black;
-    margin-left: 10px;
 `;
 
 const menuList = {

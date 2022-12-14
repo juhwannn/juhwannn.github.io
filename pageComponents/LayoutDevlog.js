@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 
 import styled from 'styled-components';
+
 import Head from "next/head";
 import {RightColor} from "./elements/Color";
 import {useRouter} from "next/router";
 import axios from "axios";
 import MenuTree from "./MenuTree";
+import ToggleSwitch from "./elements/ToggleSwitch";
 
 const Root = styled.div`
     .devlogHeader {
@@ -22,9 +24,10 @@ const Root = styled.div`
         }
         
         .devlogRightHeader {
-            .devlogMenu {
+            .devlogMenu, label{
                 float: right;
                 font-weight: bold;
+                cursor: pointer;
                 color: ${RightColor};
                 
                 margin-right: 30px;
@@ -32,7 +35,7 @@ const Root = styled.div`
             .devlogMenu:after {
                 content:"";
                 display: block; 
-                border-bottom: 3px solid #000; 
+                border-bottom: 3px solid rgba(0,86,102); 
                 transition: all 250ms ease-in-out; 
                 left: 50%; 
                 width: 0;
@@ -51,17 +54,19 @@ const Root = styled.div`
         
         display: flex;
         .devlogTagList {
-            background: black;
             flex: 1;
+            padding-top: 2%;
         }
         
         .devlogPost {
-            background: #eaeaea;
-            
-            flex: 4;
+            padding-top: 2%;
+            padding-left: 10%;
+            padding-right: 10%;
+            flex: 3;
         }
         
         .devlogMenuList {
+            padding-top: 2%;
             flex: 1;
         }
     }
@@ -75,8 +80,11 @@ const Root = styled.div`
     }
 `;
 
+const toggleTheme = (theme, setTheme) => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+};
 
-const LayoutDevlog = ({children}) => {
+const LayoutDevlog = ({children, theme, setTheme}) => {
     const router = useRouter();
 
     const [menuList, setMenuList] = useState([]);
@@ -107,6 +115,7 @@ const LayoutDevlog = ({children}) => {
                 <div className="devlogRightHeader">
                     <a className="devlogMenu" onClick={e => router.push("/devlog")}> DEVLOG </a>
                     <a className="devlogMenu" onClick={e => router.push("/")}> HOME </a>
+                    <ToggleSwitch clickHandler={e => toggleTheme(theme, setTheme)}/>
                 </div>
             </div>
 
