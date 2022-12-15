@@ -62,7 +62,6 @@ export default function Home() {
             }
         })();
     }, [router]);
-    console.log("page : " + page);
 
     return (
         <Root>
