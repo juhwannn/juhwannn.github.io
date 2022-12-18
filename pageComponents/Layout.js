@@ -4,24 +4,16 @@ import styled from "styled-components";
 import {LeftColor, RightColor} from "./elements/Color";
 
 const Root = styled.div`
-    background: linear-gradient(to right, ${LeftColor} 50%, ${RightColor} 50%);
-    
-    
     .body {
-        height: 90vh;
+        height: 100vh;
         
         overflow: auto;
     }
-    
-    
 `;
 
-const Layout =
-({
-     children
+const Layout = ({
+    children,
 }) => {
-
-
 
     return (
         <Root>
