@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import {LeftColor, RightColor} from "./Color";
+import {Props} from "next/script";
 
 const Root = styled.ul`
     padding-left: 3vw;
@@ -35,7 +36,7 @@ export const UnorderedList =
 ({
     children,
     onClick
-}) => {
+}: Props) => {
 
     return (
         <Root onClick={onClick}>
