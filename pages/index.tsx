@@ -8,7 +8,6 @@ import Info from "../pageComponents/Info";
 import Project from "../pageComponents/Project";
 import Knowledge from "../pageComponents/Knowledge";
 import {FadeIn, FadeTime} from "../pageComponents/elements/Animation";
-import Memoir from "../pageComponents/Memoir";
 
 const transitionSec = "1000ms";
 
@@ -320,7 +319,6 @@ export default function Home() {
     const [infoVisible, setInfoVisible] = useState(false);
     const [projectVisible, setProjectVisible] = useState(false);
     const [knowledgeVisible, setKnowledgeVisible] = useState(false);
-    const [memoirVisible, setMemoirVisible] = useState(false);
 
     const [clickButton, setClickButton] = useState(false);
 
@@ -349,7 +347,6 @@ export default function Home() {
 
                             setProjectVisible(false);
                             setKnowledgeVisible(false);
-                            setMemoirVisible(false);
 
                             ButtonClickHandle(clickButton, setClickButton, infoVisible, setInfoVisible, "INFO", setMenuName);
                         }}>
@@ -361,7 +358,6 @@ export default function Home() {
 
                             setInfoVisible(false);
                             setKnowledgeVisible(false);
-                            setMemoirVisible(false);
 
                             ButtonClickHandle(clickButton, setClickButton, projectVisible, setProjectVisible, "PROJECT", setMenuName);
                         }}>
@@ -377,18 +373,6 @@ export default function Home() {
                             VELOG
                         </button>
                         <br/>
-
-                        {/*<button onClick={e => {*/}
-                        {/*    e.preventDefault();*/}
-
-                        {/*    setInfoVisible(false);*/}
-                        {/*    setProjectVisible(false);*/}
-                        {/*    setKnowledgeVisible(false);*/}
-
-                        {/*    ButtonClickHandle(clickButton, setClickButton, memoirVisible, setMemoirVisible, "MEMOIR", setMenuName);*/}
-                        {/*}}>*/}
-                        {/*    MEMOIR*/}
-                        {/*</button><br/>*/}
 
                         <div className="socialMediaIcon">
                             <span className="aiFillGithub" onClick={e => {
@@ -467,7 +451,6 @@ export default function Home() {
                         <Info visible={infoVisible} setVisible={setInfoVisible}/>
                         <Project visible={projectVisible} setVisible={setProjectVisible}/>
                         <Knowledge visible={knowledgeVisible} setVisible={setKnowledgeVisible}/>
-                        <Memoir visible={memoirVisible} setVisible={setMemoirVisible}/>
                     </div>
                 </div>
 
