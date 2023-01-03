@@ -80,11 +80,7 @@ const Root = styled.div`
     }
 `;
 
-const toggleTheme = (theme, setTheme) => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-};
-
-const LayoutDevlog = ({children, theme, setTheme}) => {
+const LayoutDevlog = ({children}) => {
     const router = useRouter();
 
     const [menuList, setMenuList] = useState([]);
@@ -115,7 +111,6 @@ const LayoutDevlog = ({children, theme, setTheme}) => {
                 <div className="devlogRightHeader">
                     <a className="devlogMenu" onClick={e => router.push("/devlog")}> DEVLOG </a>
                     <a className="devlogMenu" onClick={e => router.push("/")}> HOME </a>
-                    <ToggleSwitch clickHandler={e => toggleTheme(theme, setTheme)}/>
                 </div>
             </div>
 
