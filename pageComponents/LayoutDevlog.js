@@ -60,8 +60,8 @@ const Root = styled.div`
         
         .devlogPost {
             padding-top: 2%;
-            padding-left: 10%;
-            padding-right: 10%;
+            padding-left: 5%;
+            padding-right: 5%;
             flex: 3;
         }
         
