@@ -59,14 +59,13 @@ const markdownToHtml = async (fileContent) => {
 export default async function handler(req, res) {
     const params = req.query;
 
-    const fileContent = getContent(params).fileContents;
-    const createDate = getContent(params).createDate;
-    const modifyDate = getContent(params).modifyDate;
-    const markdownContent = await markdownToHtml(fileContent);
+    const {frontContent, createDate, modifyDate, frontMatter} = getContent(params);
+    const markdownContent = await markdownToHtml(frontContent);
 
     res.status(200).json({
         markdownContent,
         createDate,
-        modifyDate
+        modifyDate,
+        frontMatter
     });
 }
