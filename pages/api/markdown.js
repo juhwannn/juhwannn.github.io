@@ -2,6 +2,7 @@ import fs from "fs";
 import {marked} from "marked";
 import React, {useEffect} from "react";
 import Prism from "prismjs";
+import matter from "gray-matter";
 
 const getContent = (params) => {
     let filePath = process.cwd() + '/posts';
@@ -12,6 +13,8 @@ const getContent = (params) => {
     });
 
     const fileContents = fs.lstatSync(filePath).isDirectory() ? "" : fs.readFileSync(filePath, 'utf8');
+    const frontMatter = matter(fileContents).data;
+    const frontContent = matter(fileContents).content;
 
     if (!fs.statSync(filePath)) {
         return;
@@ -23,9 +26,10 @@ const getContent = (params) => {
     const modifyDate = new Date(fileStats.mtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
 
     return {
-        fileContents,
+        frontContent,
         createDate: createDate[0],
-        modifyDate: modifyDate[0]
+        modifyDate: modifyDate[0],
+        frontMatter
     };
 };
 

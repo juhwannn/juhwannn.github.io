@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import fs from 'fs'
 import path from 'path'
+import matter from "gray-matter";
 
 const isDirectory = (dir) => {
     if (fs.lstatSync(dir).isDirectory()) {
@@ -18,6 +19,8 @@ const getLatelyPosts = (files = [], dir = process.cwd() + '/posts') => {
             getLatelyPosts(files, tempDir);
         } else {
             const fileStats = fs.statSync(tempDir);
+            const fileContent = fs.readFileSync(tempDir, 'utf8');
+            const frontMatter = matter(fileContent).data;
 
             if (files[files.length] === undefined) {
                 files[files.length] = {};
@@ -30,11 +33,12 @@ const getLatelyPosts = (files = [], dir = process.cwd() + '/posts') => {
             files[files.length - 1].fileName = v.split(".md")[0].replace(/\_/g,' ');
             files[files.length - 1].createDate = createDate[0];
             files[files.length - 1].modifyDate = modifyDate[0];
+            files[files.length - 1].matters = frontMatter;
         }
     });
 
     files.sort((a, b) => {
-        return new Date(b.modifyDate) - new Date(a.modifyDate);
+        return new Date(b.createDate) - new Date(a.createDate);
     });
 
     return {

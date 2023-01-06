@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import axios from "axios";
 import {marked} from "marked";
 import Prism from "prismjs";
+import matter from "gray-matter";
 
 const Root = styled.div`
     img {
@@ -47,6 +48,7 @@ export default function Home() {
     const [htmlContent, setHtmlContent] = useState();
     const [createDate, setCreateDate] = useState("");
     const [modifyDate, setModifyDate] = useState("");
+    const [frontMatter, setFrontMatter] = useState();
 
     useEffect(() => {
         (async () => {
@@ -56,6 +58,8 @@ export default function Home() {
                 setHtmlContent(response?.data?.markdownContent);
                 setCreateDate(response?.data?.createDate);
                 setModifyDate(response?.data?.modifyDate);
+                setFrontMatter(response?.data?.frontMatter);
+
             } catch (e) {
                 console.log(e);
                 return;
