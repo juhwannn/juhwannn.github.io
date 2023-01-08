@@ -62,12 +62,14 @@ const Root = styled.div`
             
             padding-left: 2%;
             
+            .tagSumCount {
+                color: #9DC9BF;
+                margin-left: 1vw;
+                font-weight: normal;
+            }
+            
             .tagList {
                 font-weight: bold;
-                
-                .tagSumCount {
-                    font-weight: normal;
-                }
                 
                 &:hover {
                     text-decoration: underline;
@@ -137,7 +139,7 @@ const TagList = (value) => {
                     pathname: "/devlog"
                 }}
             ><a className="tagList">태그 목록</a></Link>
-            <a className="tagSumCount"> ({tagCount})</a>
+            <a className="tagSumCount">({tagCount})</a>
             <hr/>
             {
                 keys.map((v, i) => {
