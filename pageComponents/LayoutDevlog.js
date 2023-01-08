@@ -53,20 +53,40 @@ const Root = styled.div`
         width: 100%;
         
         display: flex;
+        
+        padding-top: 2%;
+        
         .devlogTagList {
-            flex: 1;
-            padding-top: 2%;
+            flex: 0.5;
+            
+            padding-left: 2%;
+            
+            .tagList {
+                font-weight: bold;
+                
+                .tagSumCount {
+                    font-weight: normal;
+                }
+            }
+            
+            .devlogTagName {
+                font-weight: bold;
+            }
+            
+            .devlogTagCount {
+                color: #9DC9BF;
+                margin-left: 1vw;
+            }
         }
         
         .devlogPost {
-            padding-top: 2%;
             padding-left: 5%;
             padding-right: 5%;
             flex: 3;
         }
         
         .devlogMenuList {
-            padding-top: 2%;
+            
             flex: 1;
         }
     }
@@ -80,16 +100,62 @@ const Root = styled.div`
     }
 `;
 
+const sumTagCount = (tagList) => {
+    let sum = 0;
+
+    for (const value of Object.values(tagList)) {
+        sum += value
+    }
+
+    return sum;
+}
+
+const TagList = (value) => {
+    const keys = Object.keys(value);
+    const tagCount = sumTagCount(value);
+
+    return (
+        <div>
+            <div className="tagList">태그 목록 <a className="tagSumCount">({tagCount})</a></div>
+            <hr/>
+            {
+                keys.map((v, i) => {
+                    return (
+                        <div key={i}>
+                            <a className="devlogTagName">{v}</a>
+                            <a className="devlogTagCount">({value[v]})</a>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    );
+}
+
 const LayoutDevlog = ({children}) => {
     const router = useRouter();
 
     const [menuList, setMenuList] = useState([]);
+    const [tagList, setTagList] = useState([]);
 
     useEffect(() => {
         (async () => {
             try {
                 const response = await axios.get("/api/dirTree/");
                 setMenuList(response?.data?.result);
+            } catch (e) {
+                console.log(e);
+                return;
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const responses = await axios.get("/api/tagList/");
+                setTagList(responses?.data?.tagList);
+
             } catch (e) {
                 console.log(e);
                 return;
@@ -116,7 +182,9 @@ const LayoutDevlog = ({children}) => {
 
             <div className="devlogBody">
                 <div className="devlogTagList">
-                    TagList
+                    {
+                        TagList(tagList)
+                    }
                 </div>
 
                 <div className="devlogPost">
