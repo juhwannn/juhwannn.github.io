@@ -103,8 +103,7 @@ const Root = styled.div`
         }
         
         .devlogMenuList {
-            
-            flex: 1;
+            flex: 0.8;
         }
     }
     
@@ -217,6 +216,9 @@ const LayoutDevlog = ({children}) => {
                 </div>
 
                 <div className="devlogPost">
+                    <div className="postType">
+
+                    </div>
                     {children}
                 </div>
 

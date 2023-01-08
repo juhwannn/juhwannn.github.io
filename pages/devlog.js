@@ -7,6 +7,7 @@ import {UnorderedList} from "../pageComponents/elements/UnorderedList";
 import {Description, Header2} from "../pageComponents/elements/Header";
 import Image from "next/image";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 const Root = styled.div`
     img {
@@ -15,10 +16,84 @@ const Root = styled.div`
 `;
 
 const Card = styled.div`
-    background: grey;
-    height: 25vh;
+    display: flex;
+    height: 30vh;
     
+    transition: box-shadow 0.3s;
+    box-shadow: 4px 4px 4px 4px rgba(12, 12, 12, 0.2);
+    
+    border-radius: 10px;
+    border: 1px solid white;
+     
+    padding: 2%;
     margin-bottom: 5vh;
+    
+    &:hover {
+        transition: box-shadow 0.3s;
+        box-shadow: 8px 8px 8px 8px rgba(12, 12, 12, 0.4);
+        
+        cursor: pointer;
+    }
+    
+    
+    .cardLeft {
+        position: relative;
+        flex: 3;
+        
+        .cardFileName {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .cardCreateDate {
+            font-size: 0.8rem;
+        }
+        
+        .cardModifyDate {
+            font-size: 0.8rem;
+        }
+        
+        .cardMatterSummary {
+            opacity: 0.5;
+            word-break:break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+        }
+        
+        .cardMatterTag {
+            position: absolute;
+            bottom: 0;
+            
+            .cardMatterTags {
+                opacity: 0.7;
+                background: #7C7484;
+                color: antiquewhite;
+                border-radius: 5px;
+                
+                padding: 5px 10px;
+                margin-right: 1vh;
+                
+                transition: opacity 0.5s;
+                
+                &:hover {
+                    transition: opacity 0.3s;
+                    opacity: 1;
+                    
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+    .cardMatterThumb {
+        flex: 1.2;
+        position: relative;
+        margin: 10px;
+    }
 `;
 
 
@@ -47,36 +122,50 @@ export default function Home() {
             {
                 latelyPosts.map((v, i) => {
                     return (
-                        <Card key={i}>
-                            <div className="cardFileName">
-                                {v?.fileName}
-                            </div>
+                        <Card key={i} onClick={e => {
+                            e.preventDefault();
 
-                            <div className="cardCreateDate">
-                                작성 : {v?.createDate}
-                            </div>
+                            console.log(v);
+                        }}>
+                            <div className="cardLeft">
+                                <div className="cardFileName">
+                                    {v?.fileName}
+                                </div>
 
-                            <div className="cardModifyDate">
-                                수정 : {v?.modifyDate}
-                            </div>
+                                <div className="cardCreateDate">
+                                    작성 : {v?.createDate}
+                                </div>
 
-                            <div className="cardMatterSummary">
-                                {v?.matters?.summary}
-                            </div>
+                                <div className="cardModifyDate">
+                                    수정 : {v?.modifyDate}
+                                </div>
+                                <hr/>
+                                <div className="cardMatterSummary">
+                                    {v?.matters?.summary}
+                                </div>
 
-                            <div className="cardMatterTag">
-                                {
-                                    v?.matters?.tags?.map((tag, index) => {
-                                        return (
-                                            <div className="cardMatterTags" key={index}>
-                                                {tag}
-                                            </div>
-                                        )
-                                    })
-                                }
+                                <div className="cardMatterTag">
+                                    {
+                                        v?.matters?.tags?.map((tag, index) => {
+                                            return (
+                                                <Link
+                                                    key={index}
+                                                    passHref
+                                                    href={{
+                                                        pathname: "/devlog",
+                                                        query: tag
+                                                    }}>
+                                                    <a className="cardMatterTags">
+                                                        {tag}
+                                                    </a>
+                                                </Link>
+                                            )
+                                        })
+                                    }
+                                </div>
                             </div>
                             <div className="cardMatterThumb">
-                                {/*<Image src={`/images/devlogThumb/${v?.matters?.thumb}`} layout="fill" alt="thumb nail"/>*/}
+                                <Image src={`/images/devlogThumb/${v?.matters?.thumb}`} layout="fill" alt="thumb nail"/>
                             </div>
 
                         </Card>
