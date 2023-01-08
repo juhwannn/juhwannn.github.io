@@ -17,6 +17,12 @@ const MenuTreeDir = styled.div`
 `;
 
 const MenuTreeFiles = styled.li`
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: #9DC9BF;
+    }
+    
     ${props => props.menuDepth && {paddingLeft: props.menuDepth * 5}};
 `;
 
