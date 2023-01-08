@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import axios from "axios";
 import MenuTree from "./MenuTree";
 import ToggleSwitch from "./elements/ToggleSwitch";
+import Link from "next/link";
 
 const Root = styled.div`
     .devlogHeader {
@@ -67,10 +68,24 @@ const Root = styled.div`
                 .tagSumCount {
                     font-weight: normal;
                 }
+                
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: #9DC9BF;
+                    
+                    cursor: pointer;
+                }
             }
             
             .devlogTagName {
                 font-weight: bold;
+                
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: #9DC9BF;
+                    
+                    cursor: pointer;
+                }
             }
             
             .devlogTagCount {
@@ -116,13 +131,25 @@ const TagList = (value) => {
 
     return (
         <div>
-            <div className="tagList">태그 목록 <a className="tagSumCount">({tagCount})</a></div>
+            <Link
+                passHref
+                href={{
+                    pathname: "/devlog"
+                }}
+            ><a className="tagList">태그 목록</a></Link>
+            <a className="tagSumCount"> ({tagCount})</a>
             <hr/>
             {
                 keys.map((v, i) => {
                     return (
                         <div key={i}>
-                            <a className="devlogTagName">{v}</a>
+                            <Link
+                                passHref
+                                href={{
+                                    pathname: "/devlog",
+                                    query: v
+                                }}
+                            ><a className="devlogTagName">{v}</a></Link>
                             <a className="devlogTagCount">({value[v]})</a>
                         </div>
                     )

@@ -11,29 +11,46 @@ const isDirectory = (dir) => {
     return false;
 };
 
-const getLatelyPosts = (files = [], dir = process.cwd() + '/posts') => {
+const getLatelyPosts = (tagParam, files = [], dir = process.cwd() + '/posts') => {
     fs.readdirSync(dir).map((v, i) => {
         const tempDir = path.join(dir, v);
 
         if (isDirectory(tempDir)) {
-            getLatelyPosts(files, tempDir);
+            getLatelyPosts(tagParam, files, tempDir);
         } else {
             const fileStats = fs.statSync(tempDir);
-            const fileContent = fs.readFileSync(tempDir, 'utf8');
-            const frontMatter = matter(fileContent).data;
+            const frontMatter = matter(fs.readFileSync(tempDir, 'utf8')).data;
 
-            if (files[files.length] === undefined) {
-                files[files.length] = {};
+            // TODO: refactoring
+            if (tagParam && frontMatter.tags.includes(tagParam)) {
+                if (files[files.length] === undefined) {
+                    files[files.length] = {};
+                }
+
+                const offset = new Date().getTimezoneOffset() * 60000;
+                const createDate = new Date(fileStats.birthtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+                const modifyDate = new Date(fileStats.mtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+
+                files[files.length - 1].fileName = v.split(".md")[0].replace(/\_/g,' ');
+                files[files.length - 1].createDate = createDate[0];
+                files[files.length - 1].modifyDate = modifyDate[0];
+                files[files.length - 1].matters = frontMatter;
             }
 
-            const offset = new Date().getTimezoneOffset() * 60000;
-            const createDate = new Date(fileStats.birthtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
-            const modifyDate = new Date(fileStats.mtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+            if (!tagParam) {
+                if (files[files.length] === undefined) {
+                    files[files.length] = {};
+                }
 
-            files[files.length - 1].fileName = v.split(".md")[0].replace(/\_/g,' ');
-            files[files.length - 1].createDate = createDate[0];
-            files[files.length - 1].modifyDate = modifyDate[0];
-            files[files.length - 1].matters = frontMatter;
+                const offset = new Date().getTimezoneOffset() * 60000;
+                const createDate = new Date(fileStats.birthtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+                const modifyDate = new Date(fileStats.mtime - (offset)).toISOString().replace(/T/, ' ').split(" ");
+
+                files[files.length - 1].fileName = v.split(".md")[0].replace(/\_/g,' ');
+                files[files.length - 1].createDate = createDate[0];
+                files[files.length - 1].modifyDate = modifyDate[0];
+                files[files.length - 1].matters = frontMatter;
+            }
         }
     });
 
@@ -47,7 +64,8 @@ const getLatelyPosts = (files = [], dir = process.cwd() + '/posts') => {
 };
 
 export default async function handler(req, res) {
-    const latelyPosts = getLatelyPosts();
+    const tagParam = Object.keys(req.query);
+    const latelyPosts = getLatelyPosts(tagParam[0]);
 
     res.status(200).json({
         latelyPosts,

@@ -6,6 +6,7 @@ import Prism from "prismjs";
 import {UnorderedList} from "../pageComponents/elements/UnorderedList";
 import {Description, Header2} from "../pageComponents/elements/Header";
 import Image from "next/image";
+import {useRouter} from "next/router";
 
 const Root = styled.div`
     img {
@@ -22,12 +23,16 @@ const Card = styled.div`
 
 
 export default function Home() {
+    const router = useRouter();
+
     const [latelyPosts, setLatelyPosts] = useState([]);
+
+    const tagParam = router.query;
 
     useEffect(() => {
         (async() => {
             try {
-                const response = await axios.get("/api/latelyPosts");
+                const response = await axios.get("/api/latelyPosts", {params: tagParam});
 
                 setLatelyPosts(response?.data?.latelyPosts.files);
             } catch (e) {
@@ -35,7 +40,7 @@ export default function Home() {
                 return;
             }
         })();
-    }, []);
+    }, [tagParam]);
 
     return (
         <Root>
