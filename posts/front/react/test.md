@@ -1,4 +1,5 @@
 ---
+series: test
 tags: 
     - test1
     - test2
