@@ -176,7 +176,7 @@ export default function Home() {
                                 </div>
 
                                 <div className="cardMatterThumb">
-                                    <Image src={`/images/devlogThumb/${v?.matters?.thumb}`} layout="fill" alt="thumb nail"/>
+                                    <Image priority src={`/images/devlogThumb/${v?.matters?.thumb ?? "defaultThumb.svg"}`} layout="fill" alt="thumb nail"/>
                                 </div>
                             </Card>
                         </Link>
