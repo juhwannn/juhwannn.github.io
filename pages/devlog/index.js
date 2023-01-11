@@ -47,15 +47,17 @@ const Card = styled.div`
         
         .cardCreateDate {
             font-size: 0.8rem;
+            opacity: 0.5;
         }
         
         .cardModifyDate {
             font-size: 0.8rem;
+            opacity: 0.5;
         }
         
         .cardMatterSummary {
             opacity: 0.5;
-            word-break:break-all;
+            word-break: break-all;
             overflow: hidden;
             text-overflow: ellipsis;
             
