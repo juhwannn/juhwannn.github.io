@@ -50,6 +50,7 @@ const Root = styled.div`
     }
     
     .devlogBody {
+        min-height: 90vh;
         height: auto;
         width: 100%;
         
@@ -74,6 +75,7 @@ const Root = styled.div`
                 &:hover {
                     text-decoration: underline;
                     text-decoration-color: #9DC9BF;
+                    text-underline-position: under;
                     
                     cursor: pointer;
                 }
@@ -85,6 +87,7 @@ const Root = styled.div`
                 &:hover {
                     text-decoration: underline;
                     text-decoration-color: #9DC9BF;
+                    text-underline-position: under;
                     
                     cursor: pointer;
                 }
