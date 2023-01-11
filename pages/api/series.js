@@ -33,21 +33,23 @@ const getSeries = (files = {}, dir = process.cwd() + '/posts') => {
                 files[frontMatter?.series] = {
                     count: 1,
                     file: [{
-                        name: v,
+                        name: v?.split(".md")[0].replace(/\_/g,' '),
                         path: tempDir,
                         createDate,
                         modifyDate,
-                        thumb: frontMatter?.thumb
+                        thumb: frontMatter?.thumb,
+                        summary: frontMatter?.summary
                     }]
                 }
             } else {
                 files[frontMatter?.series].count++;
                 files[frontMatter?.series].file.push({
-                    name: v,
+                    name: v.split(".md")[0].replace(/\_/g,' '),
                     path: tempDir,
                     createDate,
                     modifyDate,
-                    thumb: frontMatter?.thumb
+                    thumb: frontMatter?.thumb,
+                    summary: frontMatter?.summary
                 });
             }
         }
@@ -58,8 +60,7 @@ const getSeries = (files = {}, dir = process.cwd() + '/posts') => {
 
 export default function handler(req, res) {
     const series = getSeries();
-    console.log(series);
-    console.log(series.test.file);
+
     res.status(200).json({
         series
     });

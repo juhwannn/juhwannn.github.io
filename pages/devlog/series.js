@@ -10,26 +10,34 @@ const Root = styled.div`
         flex-wrap: wrap;
         
         .cardSeries {
-            height: 30vh;
+            height: 35vh;
             flex-wrap: wrap;
-            width: 50%;
+            width: 42%;
             margin-top: 8%;
-            padding-left: 5%;
-            padding-right: 5%;
+            margin-left: 4%;
+            margin-right: 4%;
+            
+            cursor: pointer;
             
             .cardSeriesThumb {
                 position: relative;
                 width: 100%;
-                height: 70%;
+                height: 75%;
             }
             
             .cardSeriesSubject {
                 font-size: 1.5rem;
                 line-height: 5vh;
                 font-weight: bold;
+                
+                .cardSeriesCount {
+                    color: #9DC9BF;
+                    font-size: 1rem;
+                    font-weight: normal;
+                }
             }
             
-            .cardSeriesCount {
+            .cardSeriesDate {
                 opacity: 0.5;
                 font-size: 0.7rem;
             }
@@ -98,8 +106,8 @@ export default function Home() {
                         return (
                             <div className="cardSeries" key={i} onClick={e => {
                                 e.preventDefault();
-
-                                
+                                // TODO: router.push(query) query 길이 초과하진 않을지 검색해보고 바꾸기
+                                router.push({pathname: "/devlog/seriesDetail", query: {seriesList: JSON.stringify(seriesList[v].file), seriesName: v}});
                             }}>
                                 <div className="cardSeriesThumb">
                                     {
@@ -107,10 +115,10 @@ export default function Home() {
                                     }
                                 </div>
                                 <div className="cardSeriesSubject">
-                                    {v}
+                                    {v} <span className="cardSeriesCount">({seriesList[v].count})</span>
                                 </div>
 
-                                <div className="cardSeriesCount">
+                                <div className="cardSeriesDate">
                                     {
                                         getLastPostDate(seriesList[v].file)
                                     }
