@@ -35,6 +35,7 @@ const getLatelyPosts = (tagParam, files = [], dir = process.cwd() + '/posts') =>
                 files[files.length - 1].createDate = createDate[0];
                 files[files.length - 1].modifyDate = modifyDate[0];
                 files[files.length - 1].matters = frontMatter;
+                files[files.length - 1].filePath = tempDir;
             }
 
             if (!tagParam) {
@@ -50,6 +51,7 @@ const getLatelyPosts = (tagParam, files = [], dir = process.cwd() + '/posts') =>
                 files[files.length - 1].createDate = createDate[0];
                 files[files.length - 1].modifyDate = modifyDate[0];
                 files[files.length - 1].matters = frontMatter;
+                files[files.length - 1].filePath = tempDir;
             }
         }
     });

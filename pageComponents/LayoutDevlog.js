@@ -50,6 +50,7 @@ const Root = styled.div`
     }
     
     .devlogBody {
+        min-height: 90vh;
         height: auto;
         width: 100%;
         
@@ -74,6 +75,7 @@ const Root = styled.div`
                 &:hover {
                     text-decoration: underline;
                     text-decoration-color: #9DC9BF;
+                    text-underline-position: under;
                     
                     cursor: pointer;
                 }
@@ -85,6 +87,7 @@ const Root = styled.div`
                 &:hover {
                     text-decoration: underline;
                     text-decoration-color: #9DC9BF;
+                    text-underline-position: under;
                     
                     cursor: pointer;
                 }
@@ -100,6 +103,31 @@ const Root = styled.div`
             padding-left: 5%;
             padding-right: 5%;
             flex: 3;
+            
+            .postType {
+                text-align: center;
+                
+                height: 6vh;
+                
+                >a {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    
+                    margin-left: 5%;
+                    margin-right: 5%;
+                    transition: color 0.3s;
+                    &:hover {
+                        transition: color 0.3s;
+                        
+                        color: #9DC9BF;
+                        
+                        cursor: pointer;
+                    }
+                }
+                >a.active {
+                    color: #9DC9BF;
+                }
+            }
         }
         
         .devlogMenuList {
@@ -216,9 +244,6 @@ const LayoutDevlog = ({children}) => {
                 </div>
 
                 <div className="devlogPost">
-                    <div className="postType">
-
-                    </div>
                     {children}
                 </div>
 
