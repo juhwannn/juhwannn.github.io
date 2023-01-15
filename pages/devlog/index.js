@@ -3,15 +3,105 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {marked} from "marked";
 import Prism from "prismjs";
-import {UnorderedList} from "../../pageComponents/elements/UnorderedList";
-import {Description, Header2} from "../../pageComponents/elements/Header";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import path from 'path';
+import matter from "gray-matter";
+import fs from 'fs';
+import LatelyPosts from "../api/latelyPosts";
+import MenuTree from "../../pageComponents/MenuTree";
+import TagList from "../api/tagList";
+import DirectoryStructure from "../api/dirTree";
+import * as process from "process";
 
 const Root = styled.div`
     img {
       width: 100%;
+    }
+    
+    min-height: 90vh;
+    height: auto;
+    width: 100%;
+    
+    display: flex;
+    
+    padding-top: 2%;
+    
+    .devlogTagList {
+        flex: 0.5;
+        
+        padding-left: 2%;
+        
+        .tagSumCount {
+            color: #9DC9BF;
+            margin-left: 1vw;
+            font-weight: normal;
+        }
+        
+        .tagList {
+            font-weight: bold;
+            
+            &:hover {
+                text-decoration: underline;
+                text-decoration-color: #9DC9BF;
+                text-underline-position: under;
+                
+                cursor: pointer;
+            }
+        }
+        
+        .devlogTagName {
+            font-weight: bold;
+            
+            &:hover {
+                text-decoration: underline;
+                text-decoration-color: #9DC9BF;
+                text-underline-position: under;
+                
+                cursor: pointer;
+            }
+        }
+        
+        .devlogTagCount {
+            color: #9DC9BF;
+            margin-left: 1vw;
+        }
+    }
+    
+    .devlogPost {
+        padding-left: 5%;
+        padding-right: 5%;
+        flex: 3;
+        
+        .postType {
+            text-align: center;
+            
+            height: 6vh;
+            
+            >a {
+                font-size: 1.5rem;
+                font-weight: bold;
+                
+                margin-left: 5%;
+                margin-right: 5%;
+                transition: color 0.3s;
+                &:hover {
+                    transition: color 0.3s;
+                    
+                    color: #9DC9BF;
+                    
+                    cursor: pointer;
+                }
+            }
+            >a.active {
+                color: #9DC9BF;
+            }
+        }
+    }
+    
+    .devlogMenuList {
+        flex: 0.8;
     }
 `;
 
@@ -98,93 +188,160 @@ const Card = styled.div`
     }
 `;
 
+export const getStaticProps = () => {
 
-export default function Home() {
-    const router = useRouter();
+    const tagList = TagList();
+    const latelyPosts = LatelyPosts();
+    const menuList = DirectoryStructure(path.join(process.cwd(), '/posts'), {"posts": {}});
+    console.log("tagList");
+    console.log(tagList);
+    console.log("latelyPost");
+    console.log(latelyPosts);
+    console.log("menuList");
+    console.log(menuList);
 
-    const [latelyPosts, setLatelyPosts] = useState([]);
+    if (!tagList || !latelyPosts || !menuList) {
+        return {
+            notFound: true
+        }
+    }
 
-    const tagParam = router.query;
+    return {
+        props: {
+            tagList,
+            latelyPosts: latelyPosts.files,
+            menuList
+        }
+    }
+};
 
-    useEffect(() => {
-        (async() => {
-            try {
-                const response = await axios.get("/api/latelyPosts", {params: tagParam});
+const sumTagCount = (tagList) => {
+    let sum = 0;
 
-                setLatelyPosts(response?.data?.latelyPosts.files);
-            } catch (e) {
-                alert(e);
-                return;
-            }
-        })();
-    }, [tagParam]);
+    for (const value of Object.values(tagList)) {
+        sum += value
+    }
+
+    return sum;
+}
+
+const RenderTagList = (value) => {
+    const keys = Object.keys(value);
+    const tagCount = sumTagCount(value);
 
     return (
-        <Root>
-            <div className="postType">
-                <a className={router.pathname === "/devlog" ? "active" : ""} onClick={e => {
-                    e.preventDefault();
-
-                    router.push("/devlog");
-                }}>포스트</a>
-
-                <a className={router.pathname === "/devlog/series" ? "active" : ""} onClick={e => {
-                    e.preventDefault();
-
-                    router.push("/devlog/series");
-                }}>시리즈</a>
-            </div>
+        <div>
+            <Link
+                passHref
+                href={{
+                    pathname: "/devlog"
+                }}
+            ><a className="tagList">태그 목록</a></Link>
+            <a className="tagSumCount">({tagCount})</a>
+            <hr/>
             {
-                latelyPosts.map((v, i) => {
+                keys.map((v, i) => {
                     return (
-                        <Link passHref key={i} href={{pathname: "/posts" + v?.filePath.split("/posts")[1]}}>
-                            <Card>
-                                <div className="cardLeft">
-                                    <div className="cardFileName">
-                                        {v?.fileName}
-                                    </div>
-
-                                    <div className="cardCreateDate">
-                                        작성 : {v?.createDate}
-                                    </div>
-
-                                    <div className="cardModifyDate">
-                                        수정 : {v?.modifyDate}
-                                    </div>
-                                    <hr/>
-                                    <div className="cardMatterSummary">
-                                        {v?.matters?.summary}
-                                    </div>
-
-                                    <div className="cardMatterTag">
-                                        {
-                                            v?.matters?.tags?.map((tag, index) => {
-                                                return (
-                                                    <Link
-                                                        key={index}
-                                                        passHref
-                                                        href={{
-                                                            pathname: "/devlog",
-                                                            query: tag
-                                                        }}>
-                                                        <a className="cardMatterTags">
-                                                            {tag}
-                                                        </a>
-                                                    </Link>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </div>
-
-                                <div className="cardMatterThumb">
-                                    <Image priority src={`/images/devlogThumb/${v?.matters?.thumb ?? "defaultThumb.svg"}`} layout="fill" alt="thumb nail"/>
-                                </div>
-                            </Card>
-                        </Link>
+                        <div key={i}>
+                            <Link
+                                passHref
+                                href={{
+                                    pathname: "/devlog",
+                                    query: v
+                                }}
+                            ><a className="devlogTagName">{v}</a></Link>
+                            <a className="devlogTagCount">({value[v]})</a>
+                        </div>
                     )
                 })
             }
+        </div>
+    );
+}
+
+export default function Home({tagList, latelyPosts, menuList}) {
+    const router = useRouter();
+
+    const tagParam = router.query;
+
+    return (
+        <Root>
+            <div className="devlogTagList">
+                {
+                    RenderTagList(tagList)
+                }
+            </div>
+
+            <div className="devlogPost">
+                <div className="postType">
+                    <a className={router.pathname === "/devlog" ? "active" : ""} onClick={e => {
+                        e.preventDefault();
+
+                        router.push("/devlog");
+                    }}>포스트</a>
+
+                    <a className={router.pathname === "/devlog/series" ? "active" : ""} onClick={e => {
+                        e.preventDefault();
+
+                        router.push("/devlog/series");
+                    }}>시리즈</a>
+                </div>
+                {
+                    latelyPosts.map((v, i) => {
+                        return (
+                            <Link passHref key={i} href={{pathname: "/posts" + v?.filePath.split("/posts")[1]}}>
+                                <Card>
+                                    <div className="cardLeft">
+                                        <div className="cardFileName">
+                                            {v?.fileName}
+                                        </div>
+
+                                        <div className="cardCreateDate">
+                                            작성 : {v?.createDate}
+                                        </div>
+
+                                        <div className="cardModifyDate">
+                                            수정 : {v?.modifyDate}
+                                        </div>
+                                        <hr/>
+                                        <div className="cardMatterSummary">
+                                            {v?.matters?.summary}
+                                        </div>
+
+                                        <div className="cardMatterTag">
+                                            {
+                                                v?.matters?.tags?.map((tag, index) => {
+                                                    return (
+                                                        <Link
+                                                            key={index}
+                                                            passHref
+                                                            href={{
+                                                                pathname: "/devlog",
+                                                                query: tag
+                                                            }}>
+                                                            <a className="cardMatterTags">
+                                                                {tag}
+                                                            </a>
+                                                        </Link>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div className="cardMatterThumb">
+                                        <Image priority src={`/images/devlogThumb/${v?.matters?.thumb ?? "defaultThumb.svg"}`} layout="fill" alt="thumb nail"/>
+                                    </div>
+                                </Card>
+                            </Link>
+                        )
+                    })
+                }
+            </div>
+
+            <div className="devlogMenuList">
+                <MenuTree value={menuList}/>
+            </div>
         </Root>
     )
 }

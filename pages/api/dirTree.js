@@ -14,7 +14,7 @@ const pushFiles = (dir, file) => {
     dir["files"].push(file);
 };
 
-const getDirectoryStructure = (dir, folderStructure, prevFolder = "posts") => {
+export default function DirectoryStructure(dir, folderStructure, prevFolder = "posts") {
     fs.readdirSync(dir).map((v,i) => {
         const tempDir = path.join(dir, v);
 
@@ -22,21 +22,23 @@ const getDirectoryStructure = (dir, folderStructure, prevFolder = "posts") => {
 
         if (isDirectory(tempDir)) {
             folderStructure[prevFolder][v] = {};
-            getDirectoryStructure(tempDir, folderStructure[prevFolder], v);
+            DirectoryStructure(tempDir, folderStructure[prevFolder], v);
         } else {
             pushFiles(folderStructure[prevFolder], v);
         }
 
     });
+
+    return folderStructure;
 };
-
-export default function handler(req, res) {
-    const postsDirectory = path.join(process.cwd(), '/posts');
-    const folderStructure = {"posts": {}};
-
-    getDirectoryStructure(postsDirectory, folderStructure);
-
-    res.status(200).json({
-        result: folderStructure
-    });
-};
+//
+// export default function handler(req, res) {
+//     const postsDirectory = path.join(process.cwd(), '/posts');
+//     const folderStructure = {"posts": {}};
+//
+//     getDirectoryStructure(postsDirectory, folderStructure);
+//
+//     res.status(200).json({
+//         result: folderStructure
+//     });
+// };

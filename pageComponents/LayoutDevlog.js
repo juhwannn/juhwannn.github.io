@@ -50,89 +50,7 @@ const Root = styled.div`
     }
     
     .devlogBody {
-        min-height: 90vh;
-        height: auto;
-        width: 100%;
         
-        display: flex;
-        
-        padding-top: 2%;
-        
-        .devlogTagList {
-            flex: 0.5;
-            
-            padding-left: 2%;
-            
-            .tagSumCount {
-                color: #9DC9BF;
-                margin-left: 1vw;
-                font-weight: normal;
-            }
-            
-            .tagList {
-                font-weight: bold;
-                
-                &:hover {
-                    text-decoration: underline;
-                    text-decoration-color: #9DC9BF;
-                    text-underline-position: under;
-                    
-                    cursor: pointer;
-                }
-            }
-            
-            .devlogTagName {
-                font-weight: bold;
-                
-                &:hover {
-                    text-decoration: underline;
-                    text-decoration-color: #9DC9BF;
-                    text-underline-position: under;
-                    
-                    cursor: pointer;
-                }
-            }
-            
-            .devlogTagCount {
-                color: #9DC9BF;
-                margin-left: 1vw;
-            }
-        }
-        
-        .devlogPost {
-            padding-left: 5%;
-            padding-right: 5%;
-            flex: 3;
-            
-            .postType {
-                text-align: center;
-                
-                height: 6vh;
-                
-                >a {
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    
-                    margin-left: 5%;
-                    margin-right: 5%;
-                    transition: color 0.3s;
-                    &:hover {
-                        transition: color 0.3s;
-                        
-                        color: #9DC9BF;
-                        
-                        cursor: pointer;
-                    }
-                }
-                >a.active {
-                    color: #9DC9BF;
-                }
-            }
-        }
-        
-        .devlogMenuList {
-            flex: 0.8;
-        }
     }
     
     .devlogFooter {
@@ -144,80 +62,8 @@ const Root = styled.div`
     }
 `;
 
-const sumTagCount = (tagList) => {
-    let sum = 0;
-
-    for (const value of Object.values(tagList)) {
-        sum += value
-    }
-
-    return sum;
-}
-
-const TagList = (value) => {
-    const keys = Object.keys(value);
-    const tagCount = sumTagCount(value);
-
-    return (
-        <div>
-            <Link
-                passHref
-                href={{
-                    pathname: "/devlog"
-                }}
-            ><a className="tagList">태그 목록</a></Link>
-            <a className="tagSumCount">({tagCount})</a>
-            <hr/>
-            {
-                keys.map((v, i) => {
-                    return (
-                        <div key={i}>
-                            <Link
-                                passHref
-                                href={{
-                                    pathname: "/devlog",
-                                    query: v
-                                }}
-                            ><a className="devlogTagName">{v}</a></Link>
-                            <a className="devlogTagCount">({value[v]})</a>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    );
-}
-
 const LayoutDevlog = ({children}) => {
     const router = useRouter();
-
-    const [menuList, setMenuList] = useState([]);
-    const [tagList, setTagList] = useState([]);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await axios.get("/api/dirTree/");
-                setMenuList(response?.data?.result);
-            } catch (e) {
-                console.log(e);
-                return;
-            }
-        })();
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const responses = await axios.get("/api/tagList/");
-                setTagList(responses?.data?.tagList);
-
-            } catch (e) {
-                console.log(e);
-                return;
-            }
-        })();
-    }, []);
 
     return (
         <Root>
@@ -237,19 +83,7 @@ const LayoutDevlog = ({children}) => {
             </div>
 
             <div className="devlogBody">
-                <div className="devlogTagList">
-                    {
-                        TagList(tagList)
-                    }
-                </div>
-
-                <div className="devlogPost">
-                    {children}
-                </div>
-
-                <div className="devlogMenuList">
-                    <MenuTree value={menuList}/>
-                </div>
+                {children}
             </div>
 
             <div className="devlogFooter">
