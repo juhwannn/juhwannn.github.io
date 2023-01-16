@@ -7,11 +7,10 @@ import Image from "next/image";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import path from 'path';
-import matter from "gray-matter";
-import fs from 'fs';
 import LatelyPosts from "../api/latelyPosts";
 import MenuTree from "../../pageComponents/MenuTree";
-import TagList from "../api/tagList";
+import getTagList from "../api/tagList";
+import TagList from "../../pageComponents/TagList";
 import DirectoryStructure from "../api/dirTree";
 import * as process from "process";
 
@@ -30,43 +29,7 @@ const Root = styled.div`
     
     .devlogTagList {
         flex: 0.5;
-        
         padding-left: 2%;
-        
-        .tagSumCount {
-            color: #9DC9BF;
-            margin-left: 1vw;
-            font-weight: normal;
-        }
-        
-        .tagList {
-            font-weight: bold;
-            
-            &:hover {
-                text-decoration: underline;
-                text-decoration-color: #9DC9BF;
-                text-underline-position: under;
-                
-                cursor: pointer;
-            }
-        }
-        
-        .devlogTagName {
-            font-weight: bold;
-            
-            &:hover {
-                text-decoration: underline;
-                text-decoration-color: #9DC9BF;
-                text-underline-position: under;
-                
-                cursor: pointer;
-            }
-        }
-        
-        .devlogTagCount {
-            color: #9DC9BF;
-            margin-left: 1vw;
-        }
     }
     
     .devlogPost {
@@ -189,16 +152,9 @@ const Card = styled.div`
 `;
 
 export const getStaticProps = () => {
-
-    const tagList = TagList();
+    const tagList = getTagList();
     const latelyPosts = LatelyPosts();
     const menuList = DirectoryStructure(path.join(process.cwd(), '/posts'), {"posts": {}});
-    console.log("tagList");
-    console.log(tagList);
-    console.log("latelyPost");
-    console.log(latelyPosts);
-    console.log("menuList");
-    console.log(menuList);
 
     if (!tagList || !latelyPosts || !menuList) {
         return {
@@ -215,50 +171,6 @@ export const getStaticProps = () => {
     }
 };
 
-const sumTagCount = (tagList) => {
-    let sum = 0;
-
-    for (const value of Object.values(tagList)) {
-        sum += value
-    }
-
-    return sum;
-}
-
-const RenderTagList = (value) => {
-    const keys = Object.keys(value);
-    const tagCount = sumTagCount(value);
-
-    return (
-        <div>
-            <Link
-                passHref
-                href={{
-                    pathname: "/devlog"
-                }}
-            ><a className="tagList">태그 목록</a></Link>
-            <a className="tagSumCount">({tagCount})</a>
-            <hr/>
-            {
-                keys.map((v, i) => {
-                    return (
-                        <div key={i}>
-                            <Link
-                                passHref
-                                href={{
-                                    pathname: "/devlog",
-                                    query: v
-                                }}
-                            ><a className="devlogTagName">{v}</a></Link>
-                            <a className="devlogTagCount">({value[v]})</a>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    );
-}
-
 export default function Home({tagList, latelyPosts, menuList}) {
     const router = useRouter();
 
@@ -267,9 +179,7 @@ export default function Home({tagList, latelyPosts, menuList}) {
     return (
         <Root>
             <div className="devlogTagList">
-                {
-                    RenderTagList(tagList)
-                }
+                <TagList tagList={tagList}/>
             </div>
 
             <div className="devlogPost">
