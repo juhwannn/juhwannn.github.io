@@ -3,8 +3,53 @@ import styled from "styled-components";
 import {useRouter} from "next/router";
 import axios from "axios";
 import Image from "next/image";
+import TagList from "../../pageComponents/TagList";
+import getTagList from "../api/tagList";
+import LatelyPosts from "../api/latelyPosts";
+import DirectoryStructure from "../api/dirTree";
+import path from "path";
+import * as process from "process";
 
 const Root = styled.div`
+
+    min-height: 90vh;
+    height: auto;
+    width: 100%;
+    
+    display: flex;
+    
+    padding-top: 2%;
+    
+    .devlogTagList {
+        flex: 0.5;
+        padding-left: 2%;
+    }
+    
+    .postType {
+        text-align: center;
+        
+        height: 6vh;
+        
+        >a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            
+            margin-left: 5%;
+            margin-right: 5%;
+            transition: color 0.3s;
+            &:hover {
+                transition: color 0.3s;
+                
+                color: #9DC9BF;
+                
+                cursor: pointer;
+            }
+        }
+        >a.active {
+            color: #9DC9BF;
+        }
+    }
+    
     .series {
         display: flex;
         flex-wrap: wrap;
@@ -67,7 +112,27 @@ const getLastPostDate = (series) => {
     );
 }
 
-export default function Home() {
+export const getStaticProps = () => {
+    const tagList = getTagList();
+    const latelyPosts = LatelyPosts();
+    const menuList = DirectoryStructure(path.join(process.cwd(), '/posts'), {"posts": {}});
+
+    if (!tagList || !latelyPosts || !menuList) {
+        return {
+            notFound: true
+        }
+    }
+
+    return {
+        props: {
+            tagList,
+            latelyPosts: latelyPosts.files,
+            menuList
+        }
+    }
+};
+
+export default function Home({tagList}) {
     const router = useRouter();
 
     const [seriesList, setSeriesList] = useState({});
@@ -98,6 +163,10 @@ export default function Home() {
 
                     router.push("/devlog/series");
                 }}>시리즈</a>
+            </div>
+
+            <div className="devlogTagList">
+                <TagList tagList={tagList}/>
             </div>
 
             <div className="series">

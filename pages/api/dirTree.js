@@ -31,14 +31,3 @@ export default function DirectoryStructure(dir, folderStructure, prevFolder = "p
 
     return folderStructure;
 };
-//
-// export default function handler(req, res) {
-//     const postsDirectory = path.join(process.cwd(), '/posts');
-//     const folderStructure = {"posts": {}};
-//
-//     getDirectoryStructure(postsDirectory, folderStructure);
-//
-//     res.status(200).json({
-//         result: folderStructure
-//     });
-// };
