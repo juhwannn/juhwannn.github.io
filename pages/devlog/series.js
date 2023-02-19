@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {useRouter} from "next/router";
-import axios from "axios";
 import Image from "next/image";
 import TagList from "../../pageComponents/TagList";
 import getTagList from "../api/tagList";
-import LatelyPosts from "../api/latelyPosts";
 import DirectoryStructure from "../api/dirTree";
 import path from "path";
 import * as process from "process";
+import MenuTree from "../../pageComponents/MenuTree";
+import getSeries from "../api/series";
 
 const Root = styled.div`
 
@@ -51,9 +51,6 @@ const Root = styled.div`
     }
     
     .series {
-        display: flex;
-        flex-wrap: wrap;
-        
         .cardSeries {
             height: 35vh;
             flex-wrap: wrap;
@@ -114,10 +111,10 @@ const getLastPostDate = (series) => {
 
 export const getStaticProps = () => {
     const tagList = getTagList();
-    const latelyPosts = LatelyPosts();
+    const seriesList = getSeries();
     const menuList = DirectoryStructure(path.join(process.cwd(), '/posts'), {"posts": {}});
 
-    if (!tagList || !latelyPosts || !menuList) {
+    if (!tagList || !seriesList || !menuList) {
         return {
             notFound: true
         }
@@ -126,76 +123,69 @@ export const getStaticProps = () => {
     return {
         props: {
             tagList,
-            latelyPosts: latelyPosts.files,
-            menuList
+            seriesList: seriesList.files,
+            menuList,
         }
     }
 };
 
-export default function Home({tagList}) {
+export default function Home({tagList, seriesList, menuList}) {
     const router = useRouter();
-
-    const [seriesList, setSeriesList] = useState({});
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await axios.get("/api/series");
-                setSeriesList(response?.data?.series);
-            } catch (e) {
-                console.log(e);
-                return;
-            }
-        })();
-    }, []);
 
     return (
         <Root>
-            <div className="postType">
-                <a className={router.pathname === "/devlog" ? "active" : ""} onClick={e => {
-                    e.preventDefault();
-
-                    router.push("/devlog");
-                }}>포스트</a>
-
-                <a className={router.pathname === "/devlog/series" ? "active" : ""} onClick={e => {
-                    e.preventDefault();
-
-                    router.push("/devlog/series");
-                }}>시리즈</a>
-            </div>
-
             <div className="devlogTagList">
                 <TagList tagList={tagList}/>
             </div>
 
-            <div className="series">
-                {
-                    Object.keys(seriesList)?.map((v, i) => {
-                        return (
-                            <div className="cardSeries" key={i} onClick={e => {
-                                e.preventDefault();
-                                // TODO: router.push(query) query 길이 초과하진 않을지 검색해보고 바꾸기
-                                router.push({pathname: "/devlog/seriesDetail", query: {seriesList: JSON.stringify(seriesList[v].file), seriesName: v}});
-                            }}>
-                                <div className="cardSeriesThumb">
-                                    {
-                                        getLastPostThumb(seriesList[v].file)
-                                    }
-                                </div>
-                                <div className="cardSeriesSubject">
-                                    {v} <span className="cardSeriesCount">({seriesList[v].count})</span>
-                                </div>
+            <div className="devlogPost">
+                <div className="postType">
+                    <a className={router.pathname === "/devlog" ? "active" : ""} onClick={e => {
+                        e.preventDefault();
 
-                                <div className="cardSeriesDate">
-                                    {
-                                        getLastPostDate(seriesList[v].file)
-                                    }
+                        router.push("/devlog");
+                    }}>포스트</a>
+
+                    <a className={router.pathname === "/devlog/series" ? "active" : ""} onClick={e => {
+                        e.preventDefault();
+
+                        router.push("/devlog/series");
+                    }}>시리즈</a>
+                </div>
+
+                <div className="series">
+                    {
+                        Object.keys(seriesList)?.map((v, i) => {
+
+                            return (
+                                <div className="cardSeries" key={i} onClick={e => {
+                                    e.preventDefault();
+                                    // TODO: router.push(query) query 길이 초과하진 않을지 검색해보고 바꾸기
+                                    router.push({pathname: "/devlog/seriesDetail", query: {seriesList: JSON.stringify(seriesList[v].file), seriesName: v}});
+                                }}>
+                                    <div className="cardSeriesThumb">
+                                        {
+                                            getLastPostThumb(seriesList[v].file)
+                                        }
+                                    </div>
+                                    <div className="cardSeriesSubject">
+                                        {v} <span className="cardSeriesCount">({seriesList[v].count})</span>
+                                    </div>
+
+                                    <div className="cardSeriesDate">
+                                        {
+                                            getLastPostDate(seriesList[v].file)
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
+            </div>
+
+            <div className="devlogMenuList">
+                <MenuTree value={menuList}/>
             </div>
         </Root>
     );

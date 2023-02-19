@@ -11,7 +11,7 @@ const isDirectory = (dir) => {
     return false;
 };
 
-const getSeries = (files = {}, dir = process.cwd() + '/posts') => {
+export default function getSeries(files = {}, dir = process.cwd() + '/posts') {
     fs.readdirSync(dir).map((v, i) => {
         const tempDir = path.join(dir, v);
 
@@ -55,13 +55,5 @@ const getSeries = (files = {}, dir = process.cwd() + '/posts') => {
         }
     });
 
-    return files;
+    return {files};
 };
-
-export default function handler(req, res) {
-    const series = getSeries();
-
-    res.status(200).json({
-        series
-    });
-}
