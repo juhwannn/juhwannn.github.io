@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {marked} from "marked";
 import Prism from "prismjs";
 import Image from "next/image";

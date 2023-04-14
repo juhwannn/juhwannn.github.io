@@ -352,7 +352,7 @@ export default function Home() {
                         }}>
                             INFO
                         </button><br/>
-
+                        
                         <button onClick={e => {
                             e.preventDefault();
 
@@ -365,13 +365,11 @@ export default function Home() {
                         </button><br/>
 
 
-                        <button onClick={e => {
-                            e.preventDefault();
-
-                            router.push("/devlog");
-                        }}>
-                            VELOG
-                        </button>
+                        <a target="_black" href="https://velog.io/@juhwannn" rel='noreferrer'>
+                            <button>
+                                VELOG
+                            </button>
+                        </a>
                         <br/>
 
                         <div className="socialMediaIcon">
