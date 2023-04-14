@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {useRouter} from "next/router";
-import axios from "axios";
-import {marked} from "marked";
-import Prism from "prismjs";
-import matter from "gray-matter";
+
 
 const Root = styled.div`
     img {

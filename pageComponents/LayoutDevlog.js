@@ -5,10 +5,6 @@ import styled from 'styled-components';
 import Head from "next/head";
 import {RightColor} from "./elements/Color";
 import {useRouter} from "next/router";
-import axios from "axios";
-import MenuTree from "./MenuTree";
-import ToggleSwitch from "./elements/ToggleSwitch";
-import Link from "next/link";
 
 const Root = styled.div`
     .devlogHeader {
