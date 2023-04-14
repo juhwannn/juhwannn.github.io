@@ -66,7 +66,47 @@ const Info =
 
             <UnorderedList>
                 <Header2>
-                    코드와이즈 <Description>2020.05 ~</Description>
+                    더클라우드팩토리 <Description>2023.02 ~ </Description>
+                </Header2>
+
+                <hr/>
+
+                <li>
+                    직책 : 선임 연구원
+                </li>
+
+                <li>
+                    기술스택 : Vue.js, Node, Express, AWS, Docker
+                </li>
+
+                <li>
+                    주요업무 : 자사 쇼핑몰 구축 및 개발
+                </li>
+            </UnorderedList>
+
+            <UnorderedList>
+                <Header2>
+                    아이티로그 <Description>2020.08 ~ 2022.12</Description>
+                </Header2>
+
+                <hr/>
+
+                <li>
+                    직책 : 선임 연구원
+                </li>
+
+                <li>
+                    기술스택 : Next.js, AWS, Docker, Node, Express
+                </li>
+
+                <li>
+                    주요업무 : 자사 안전 교육 솔루션 초기 구축 및 개발
+                </li>
+            </UnorderedList>
+
+            <UnorderedList>
+                <Header2>
+                    코드와이즈 <Description>2020.05 ~ 2022.05</Description>
                 </Header2>
 
                 <hr/>
