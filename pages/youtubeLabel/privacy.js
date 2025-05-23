@@ -3,7 +3,7 @@ export default function Privacy() {
     <div>
     <h1>Privacy Policy – YouTube Label</h1>
     <p>
-      <strong>YouTube Label</strong> (이하 "확장 프로그램")은 사용자의
+      <strong>YouTube Label</strong> (이하 &quot;확장 프로그램&quot;)은 사용자의
       프라이버시를 중요하게 생각합니다. 이 문서는 확장 프로그램이 어떤 데이터를
       처리하는지에 대한 정보를 제공합니다.
     </p>
